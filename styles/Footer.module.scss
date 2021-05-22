@@ -1,0 +1,101 @@
+.footer {
+  width: 100%;
+  padding: 0 12%;
+  padding-top: 5%;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(100.17deg, #1c2973 2.34%, #56b7e0 100%);
+  @media screen and (max-width: 888px) {
+    padding: 0 3%;
+  }
+  .footerContainer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    @media screen and (max-width: 520px) {
+      flex-wrap: wrap;
+      justify-content: start;
+    }
+    .footerHeader {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: start;
+      max-width: 400px;
+      @media screen and (max-width: 520px) {
+        max-width: 200px;
+      }
+      .footerTab {
+        font-size: 16px;
+        line-height: 32px;
+        color: #e0e0e0;
+        @media screen and (max-width: 520px) {
+          font-size: 14px;
+          line-height: 16px;
+        }
+        @media screen and (max-width: 380px) {
+          font-size: 12px;
+          line-height: 14px;
+        }
+        &:nth-child(1) {
+          font-weight: 600;
+          font-size: 24px;
+          line-height: 32px;
+          color: #ffffff;
+          margin-bottom: 30px;
+          font-family: Source Serif Pro;
+          @media screen and (max-width: 520px) {
+            margin-bottom: 10px;
+            font-size: 18px;
+            line-height: 24px;
+          }
+          @media screen and (max-width: 380px) {
+            margin-bottom: 10px;
+            font-size: 16px;
+            line-height: 22px;
+          }
+        }
+      }
+      .footerTabButton {
+        display: flex;
+        justify-content: center;
+        background: #fff;
+        width: 300px;
+        padding: 5px;
+        width: 100%;
+        padding-left: 10px;
+        border-radius: 5px;
+        input {
+            width: 100%;
+          background: transparent;
+          border: none;
+          font-size: 12px;
+        }
+        .footerButton {
+            width: 100%;
+          font-weight: 500;
+          font-size: 12px;
+          line-height: 12px;
+          background: #305998;
+          border-radius: 5px;
+          text-align: center;
+          letter-spacing: 0.10em;
+          text-transform: uppercase;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+  .footerBottom {
+    width: 100%;
+    font-size: 16px;
+    line-height: 32px;
+    text-align: center;
+    color: #ffffff;
+    padding-top: 10px;
+    border-top: 2px solid #ffffff;
+  }
+}

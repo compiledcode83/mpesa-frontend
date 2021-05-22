@@ -1,0 +1,226 @@
+.banner {
+  width: 100%;
+  height: 100vh;
+  padding: 5% 10%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  position: relative;
+  z-index: 10;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media screen and (min-width: 1400px) {
+  .banner {
+    max-height: 1000px;
+  }
+}
+
+@media screen and (max-width: 888px) {
+  .banner {
+    padding: 3% 5%;
+    margin-top: 50px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .banner {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
+.banner .bannerBg {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .banner .bannerBg {
+    height: 80vh;
+  }
+}
+
+.banner .bannerLeft {
+  width: 100%;
+  z-index: 2;
+  color: #ffffff;
+  padding-top: 100px;
+}
+
+@media screen and (min-width: 521px) and (max-width: 1024px) {
+  .banner .bannerLeft {
+    margin-bottom: 50px;
+    padding-top: 0;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .banner .bannerLeft {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+.banner .bannerLeft .bannerHeader {
+  max-width: 741px;
+  max-height: 116px;
+  font-weight: 600;
+  font-size: 62px;
+  line-height: 75px;
+}
+
+@media screen and (min-width: 1920px) {
+  .banner .bannerLeft .bannerHeader {
+    max-width: auto;
+    max-height: auto;
+    font-size: 85px;
+    line-height: 115px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .banner .bannerLeft .bannerHeader {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .banner .bannerLeft .bannerHeader {
+    font-size: 42px;
+    line-height: 50px;
+    margin-right: 10px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .banner .bannerLeft .bannerHeader {
+    font-size: 36px;
+    line-height: 50px;
+    text-align: center;
+  }
+}
+
+.banner .bannerLeft .bannerDesp {
+  font-size: 24px;
+  line-height: 36px;
+  max-width: 741px;
+}
+
+@media screen and (min-width: 1920px) {
+  .banner .bannerLeft .bannerDesp {
+    font-size: 36px;
+    line-height: 42px;
+  }
+}
+
+@media screen and (max-width: 888px) {
+  .banner .bannerLeft .bannerDesp {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+
+.banner .bannerLeft .bannerButton {
+  max-width: 224px;
+  max-height: 70px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #1c2973;
+  background: #ffffff;
+  -webkit-box-shadow: 0px 8px 36px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 8px 36px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+}
+
+.banner .bannerLeft .bannerButton:hover {
+  opacity: 0.9;
+}
+
+.banner .bannerRight {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 20%;
+  z-index: 2;
+}
+
+@media screen and (min-width: 889px) and (max-width: 1024px) {
+  .banner .bannerRight {
+    margin-top: 30px;
+  }
+}
+
+@media screen and (min-width: 521px) and (max-width: 888px) {
+  .banner .bannerRight {
+    margin-top: -30px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .banner .bannerRight {
+    margin-top: -50px;
+  }
+}
+
+.banner .bannerRight .bannerImage1 {
+  margin-right: -40px;
+}
+
+@media screen and (min-width: 1920px) {
+  .banner .bannerRight .bannerImage1 {
+    margin-right: -60px;
+  }
+}
+
+.banner .bannerRight .bannerImage2 {
+  margin-left: -40px;
+  margin-top: 250px;
+}
+
+@media screen and (min-width: 1920px) {
+  .banner .bannerRight .bannerImage2 {
+    margin-top: 300px;
+    margin-left: -60px;
+  }
+}
+
+@media screen and (min-width: 521px) and (max-width: 1024px) {
+  .banner .bannerRight .bannerImage2 {
+    margin-top: 180px;
+  }
+}
+/*# sourceMappingURL=Banner.module.css.map */
