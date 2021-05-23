@@ -46,6 +46,8 @@
       li{
         transition: all 0.3s linear;
         cursor: pointer;
+        text-decoration: none !important;
+        list-style: none !important;
         border-bottom: 1px solid transparent;
         &:hover{
           border-bottom: 1px solid #ffffff;
@@ -53,6 +55,8 @@
       }
       .active{
         border-bottom: 1px solid #ffffff;
+        text-decoration: none !important;
+        list-style: none !important;
       }
     }
   }
