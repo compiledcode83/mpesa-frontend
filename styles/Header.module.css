@@ -38,23 +38,58 @@
 }
 
 .header .headerLeft .headerTabs {
-  width: 70%;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  font-size: 20px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 18px;
   line-height: 24px;
   text-align: center;
+  margin-left: 20px;
   color: #ffffff;
+}
+
+@media screen and (min-width: 1500px) {
+  .header .headerLeft .headerTabs {
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    width: 80%;
+    margin-left: 100px;
+  }
+}
+
+@media only screen and (min-device-width: 889px) and (max-device-width: 1200px) {
+  .header .headerLeft .headerTabs {
+    width: 120%;
+    margin-left: 0;
+    margin-right: 20px;
+    font-size: 1rem;
+  }
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 888px) {
   .header .headerLeft .headerTabs {
     display: none;
   }
+}
+
+.header .headerLeft .headerTabs li {
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+}
+
+.header .headerLeft .headerTabs li:hover {
+  border-bottom: 1px solid #ffffff;
+}
+
+.header .headerLeft .headerTabs .active {
+  border-bottom: 1px solid #ffffff;
 }
 
 .header .headerRight {

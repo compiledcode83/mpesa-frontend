@@ -25,6 +25,11 @@
       justify-content: center;
       align-items: start;
       max-width: 400px;
+      &:nth-child(4) {
+        @media screen and (min-width: 340px) and (max-width: 520px) {
+          margin-left: -20px;
+        }
+      }
       @media screen and (max-width: 520px) {
         max-width: 200px;
       }
@@ -34,7 +39,7 @@
         color: #e0e0e0;
         @media screen and (max-width: 520px) {
           font-size: 14px;
-          line-height: 16px;
+          line-height: 24px;
         }
         @media screen and (max-width: 380px) {
           font-size: 12px;
@@ -47,12 +52,18 @@
           color: #ffffff;
           margin-bottom: 30px;
           font-family: Source Serif Pro;
+          @media screen and (max-width: 1024px) {
+            font-size: 20px;
+            white-space: nowrap;
+          }
           @media screen and (max-width: 520px) {
+            white-space: normal;
             margin-bottom: 10px;
             font-size: 18px;
             line-height: 24px;
           }
           @media screen and (max-width: 380px) {
+            white-space: normal;
             margin-bottom: 10px;
             font-size: 16px;
             line-height: 22px;
@@ -63,28 +74,47 @@
         display: flex;
         justify-content: center;
         background: #fff;
-        width: 300px;
+        max-width: 300px;
         padding: 5px;
         width: 100%;
         padding-left: 10px;
         border-radius: 5px;
+        margin-top: 10px;
+        @media screen and (max-width: 520px) {
+          flex-wrap: wrap;
+          align-items: flex-start;
+          justify-content: start;
+          background: transparent;
+          padding: 0;
+          padding-left: 0;
+        }
         input {
-            width: 100%;
+          width: 100%;
           background: transparent;
           border: none;
           font-size: 12px;
+          @media screen and (max-width: 520px) {
+            // text-align: center;
+            padding: 10px;
+            background: white;
+          }
         }
         .footerButton {
-            width: 100%;
+          width: 100%;
           font-weight: 500;
           font-size: 12px;
           line-height: 12px;
           background: #305998;
           border-radius: 5px;
           text-align: center;
-          letter-spacing: 0.10em;
+          letter-spacing: 0.1em;
           text-transform: uppercase;
           color: #ffffff;
+          @media screen and (max-width: 520px) {
+            font-size: 10px;
+            margin-top: 10px;
+            width: 70%;
+          }
         }
       }
     }

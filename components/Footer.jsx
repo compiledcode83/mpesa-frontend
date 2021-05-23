@@ -1,5 +1,5 @@
-import { Button } from 'baseui/button';
-import styles from '../styles/Footer.module.css'
+import { Button } from "baseui/button";
+import styles from "../styles/Footer.module.css";
 
 const Footer = () => {
   return (
@@ -36,7 +36,6 @@ const Footer = () => {
           </li>
         </ul>
       </div>
-      <hr />
       <span className={styles.footerBottom}>
         Copyright 2021. All rights reserved by us
       </span>

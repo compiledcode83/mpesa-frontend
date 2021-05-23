@@ -64,6 +64,12 @@
   max-width: 400px;
 }
 
+@media screen and (min-width: 340px) and (max-width: 520px) {
+  .footer .footerContainer .footerHeader:nth-child(4) {
+    margin-left: -20px;
+  }
+}
+
 @media screen and (max-width: 520px) {
   .footer .footerContainer .footerHeader {
     max-width: 200px;
@@ -79,7 +85,7 @@
 @media screen and (max-width: 520px) {
   .footer .footerContainer .footerHeader .footerTab {
     font-size: 14px;
-    line-height: 16px;
+    line-height: 24px;
   }
 }
 
@@ -99,8 +105,16 @@
   font-family: Source Serif Pro;
 }
 
+@media screen and (max-width: 1024px) {
+  .footer .footerContainer .footerHeader .footerTab:nth-child(1) {
+    font-size: 20px;
+    white-space: nowrap;
+  }
+}
+
 @media screen and (max-width: 520px) {
   .footer .footerContainer .footerHeader .footerTab:nth-child(1) {
+    white-space: normal;
     margin-bottom: 10px;
     font-size: 18px;
     line-height: 24px;
@@ -109,6 +123,7 @@
 
 @media screen and (max-width: 380px) {
   .footer .footerContainer .footerHeader .footerTab:nth-child(1) {
+    white-space: normal;
     margin-bottom: 10px;
     font-size: 16px;
     line-height: 22px;
@@ -123,11 +138,28 @@
       -ms-flex-pack: center;
           justify-content: center;
   background: #fff;
-  width: 300px;
+  max-width: 300px;
   padding: 5px;
   width: 100%;
   padding-left: 10px;
   border-radius: 5px;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 520px) {
+  .footer .footerContainer .footerHeader .footerTabButton {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: start;
+    background: transparent;
+    padding: 0;
+    padding-left: 0;
+  }
 }
 
 .footer .footerContainer .footerHeader .footerTabButton input {
@@ -135,6 +167,13 @@
   background: transparent;
   border: none;
   font-size: 12px;
+}
+
+@media screen and (max-width: 520px) {
+  .footer .footerContainer .footerHeader .footerTabButton input {
+    padding: 10px;
+    background: white;
+  }
 }
 
 .footer .footerContainer .footerHeader .footerTabButton .footerButton {
@@ -145,9 +184,17 @@
   background: #305998;
   border-radius: 5px;
   text-align: center;
-  letter-spacing: 0.10em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #ffffff;
+}
+
+@media screen and (max-width: 520px) {
+  .footer .footerContainer .footerHeader .footerTabButton .footerButton {
+    font-size: 10px;
+    margin-top: 10px;
+    width: 70%;
+  }
 }
 
 .footer .footerBottom {

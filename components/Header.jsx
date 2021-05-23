@@ -3,10 +3,12 @@ import { Button } from "baseui/button";
 import ArrowDown from "baseui/icon/arrow-down";
 import styles from "../styles/Header.module.css";
 import { useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
-export const Header = () => {
+const Header = () => {
   const [sidebar, setSidebar] = useState(null);
-
+  const router = useRouter();
   return (
     <div className={styles.header}>
       <div className={styles.headerLeft}>
@@ -18,9 +20,15 @@ export const Header = () => {
           minWidth={100}
         />
         <ul className={styles.headerTabs}>
-          <li>Home</li>
-          <li>Features</li>
-          <li>About</li>
+          <li className={`${router.pathname == "/" && styles.active}`}>
+            <Link href="/">Home</Link>
+          </li>
+          <li className={`${router.pathname == "/features" && styles.active}`}>Features</li>
+          <li className={`${router.pathname == "/about" && styles.active}`}>About</li>
+          <li className={`${router.pathname == "/faq" && styles.active}`}>FAQ</li>
+          <li className={`${router.pathname == "/contact" && styles.active}`}>
+            <Link href="/contact">Contact</Link>
+          </li>
         </ul>
       </div>
       <div className={styles.headerRight}>
@@ -83,6 +91,18 @@ export const Header = () => {
             onClick={() => setSidebar(false)}
             className={styles.sidebarMenuList}
           >
+            FAQ
+          </li>
+          <li
+            onClick={() => setSidebar(false)}
+            className={styles.sidebarMenuList}
+          >
+            Contact
+          </li>
+          <li
+            onClick={() => setSidebar(false)}
+            className={styles.sidebarMenuList}
+          >
             <Button className={styles.headerAdmin}>
               <Image
                 src="/images/adminIcon.svg"
@@ -93,20 +113,11 @@ export const Header = () => {
               <a className={styles.admin}>ADMIN LOGIN</a>
             </Button>
           </li>
-          <li
-            onClick={() => setSidebar(false)}
-            className={styles.sidebarMenuList}
-          >
-            <Button
-              className={styles.headerDownload}
-              startEnhancer={() => <ArrowDown size={24} />}
-            >
-              DOWNLOAD
-            </Button>
-          </li>
         </ul>
       </div>
       {/* Sidebar */}
     </div>
   );
 };
+
+export default Header;

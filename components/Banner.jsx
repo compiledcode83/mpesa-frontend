@@ -6,9 +6,6 @@ import ChevronRight from "baseui/icon/chevron-right";
 const Banner = () => {
   return (
     <div className={styles.banner}>
-      {/* <span>
-    <div className={styles.banner}>
-            </span> */}
       <img className={styles.bannerBg} src="/images/shape.svg" alt="" />
       <div className={styles.bannerLeft}>
         <h1 className={styles.bannerHeader}>Pay in Installments</h1>
