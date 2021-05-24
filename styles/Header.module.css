@@ -92,8 +92,8 @@
 
 .header .headerLeft .headerTabs .active {
   border-bottom: 1px solid #ffffff;
-  text-decoration: none !important;
-  list-style: none !important;
+  text-decoration: none;
+  list-style: none;
 }
 
 .header .headerRight {

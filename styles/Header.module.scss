@@ -29,7 +29,7 @@
       text-align: center;
       margin-left: 20px;
       color: #ffffff;
-      @media screen and (min-width:1500px){
+      @media screen and (min-width: 1500px) {
         justify-content: space-evenly;
         width: 80%;
         margin-left: 100px;
@@ -43,20 +43,20 @@
       @media only screen and (min-device-width: 320px) and (max-device-width: 888px) {
         display: none;
       }
-      li{
+      li {
         transition: all 0.3s linear;
         cursor: pointer;
         text-decoration: none !important;
         list-style: none !important;
         border-bottom: 1px solid transparent;
-        &:hover{
+        &:hover {
           border-bottom: 1px solid #ffffff;
         }
       }
-      .active{
+      .active {
         border-bottom: 1px solid #ffffff;
-        text-decoration: none !important;
-        list-style: none !important;
+        text-decoration: none;
+        list-style: none;
       }
     }
   }
