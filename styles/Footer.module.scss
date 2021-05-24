@@ -25,6 +25,10 @@
       justify-content: center;
       align-items: start;
       max-width: 400px;
+      @media screen and (min-width: 1600px) {
+        margin:0 70px;
+        margin-bottom: 30px;
+      }
       &:nth-child(4) {
         @media screen and (min-width: 340px) and (max-width: 520px) {
           margin-left: -20px;

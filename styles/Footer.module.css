@@ -64,6 +64,13 @@
   max-width: 400px;
 }
 
+@media screen and (min-width: 1600px) {
+  .footer .footerContainer .footerHeader {
+    margin: 0 70px;
+    margin-bottom: 30px;
+  }
+}
+
 @media screen and (min-width: 340px) and (max-width: 520px) {
   .footer .footerContainer .footerHeader:nth-child(4) {
     margin-left: -20px;

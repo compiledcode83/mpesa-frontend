@@ -181,6 +181,9 @@
     color: #1c2973;
     padding: 0 5%;
     margin-top: 5%;
+    @media screen and (min-width:1600px){
+      padding: 0 9%;
+    }
     @media screen and (min-width:1221px){
       padding: 0 10%;
     }
@@ -230,6 +233,11 @@
       justify-content: start;
       margin: 15px auto;
       padding: 10px 40px;
+    }
+    @media screen and (min-width:1600px){
+        margin: 15px auto;
+        min-width: 370px;
+        min-height:145px;
       }
       .serviceImage {
         padding: 20px;
@@ -240,11 +248,14 @@
         @media screen and (max-width:520px){
           padding:15px;
         }
+        @media screen and (min-width:1600px){
+          padding:40px;
+        }
       }
       .serviceRight{
         margin-left: 25px;
         font-size: 18px;
-line-height: 28px;
+line-height: 32px;
 white-space: nowrap;
 color: #6D809B;
 @media screen and (max-width:520px){

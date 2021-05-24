@@ -278,6 +278,12 @@
   margin-top: 5%;
 }
 
+@media screen and (min-width: 1600px) {
+  .banner .bannerServicesHeader {
+    padding: 0 9%;
+  }
+}
+
 @media screen and (min-width: 1221px) {
   .banner .bannerServicesHeader {
     padding: 0 10%;
@@ -365,6 +371,14 @@
   }
 }
 
+@media screen and (min-width: 1600px) {
+  .banner .bannerServices .bannerService {
+    margin: 15px auto;
+    min-width: 370px;
+    min-height: 145px;
+  }
+}
+
 .banner .bannerServices .bannerService .serviceImage {
   padding: 20px;
   border-radius: 50%;
@@ -381,10 +395,16 @@
   }
 }
 
+@media screen and (min-width: 1600px) {
+  .banner .bannerServices .bannerService .serviceImage {
+    padding: 40px;
+  }
+}
+
 .banner .bannerServices .bannerService .serviceRight {
   margin-left: 25px;
   font-size: 18px;
-  line-height: 28px;
+  line-height: 32px;
   white-space: nowrap;
   color: #6D809B;
 }
