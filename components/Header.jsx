@@ -23,9 +23,15 @@ const Header = () => {
           <li className={`${router.pathname == "/" && styles.active}`}>
             <Link href="/">Home</Link>
           </li>
-          <li className={`${router.pathname == "/features" && styles.active}`}>Features</li>
-          <li className={`${router.pathname == "/about" && styles.active}`}>About</li>
-          <li className={`${router.pathname == "/faq" && styles.active}`}>FAQ</li>
+          <li className={`${router.pathname == "/features" && styles.active}`}>
+            Features
+          </li>
+          <li className={`${router.pathname == "/about" && styles.active}`}>
+            About
+          </li>
+          <li className={`${router.pathname == "/faq" && styles.active}`}>
+            FAQ
+          </li>
           <li className={`${router.pathname == "/contact" && styles.active}`}>
             <Link href="/contact">Contact</Link>
           </li>
@@ -73,45 +79,28 @@ const Header = () => {
             onClick={() => setSidebar(false)}
             className={styles.sidebarMenuList}
           >
-            Home
+            <Link href="/">Home</Link>
+          </li>
+          <li
+            className={styles.sidebarMenuList}
+          >
+            <Link href="/">Features</Link>
+          </li>
+          <li
+            className={styles.sidebarMenuList}
+          >
+            <Link href="/">About</Link>
+          </li>
+          <li
+            className={styles.sidebarMenuList}
+          >
+            <Link href="/">FAQ</Link>
           </li>
           <li
             onClick={() => setSidebar(false)}
             className={styles.sidebarMenuList}
           >
-            Features
-          </li>
-          <li
-            onClick={() => setSidebar(false)}
-            className={styles.sidebarMenuList}
-          >
-            About
-          </li>
-          <li
-            onClick={() => setSidebar(false)}
-            className={styles.sidebarMenuList}
-          >
-            FAQ
-          </li>
-          <li
-            onClick={() => setSidebar(false)}
-            className={styles.sidebarMenuList}
-          >
-            Contact
-          </li>
-          <li
-            onClick={() => setSidebar(false)}
-            className={styles.sidebarMenuList}
-          >
-            <Button className={styles.headerAdmin}>
-              <Image
-                src="/images/adminIcon.svg"
-                alt=""
-                width={15}
-                height={15}
-              />
-              <a className={styles.admin}>ADMIN LOGIN</a>
-            </Button>
+            <Link href="/contact">Contact</Link>
           </li>
         </ul>
       </div>

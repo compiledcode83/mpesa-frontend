@@ -1,5 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap");
+
 .header {
-  width: 100%;
+  max-width: 100vw;
+  overflow: hidden;
   height: 100px;
   background: transparent;
   display: flex;
@@ -12,14 +16,17 @@
   left: 0;
   right: 0;
   @media screen and (max-width: 888px) {
-    position: fixed;
-    padding-left: 5%;
-    background: linear-gradient(175deg, #1c2973 2.34%, #56b7e0 100%);
+    // position: fixed;
+    padding-left: 15%;
   }
   .headerLeft {
     display: flex;
     align-items: center;
     width: 100%;
+    @media screen and (max-width: 520px) {
+      justify-content: center;
+      
+    }
     .headerTabs {
       width: 100%;
       display: flex;
@@ -116,8 +123,9 @@
   position: fixed;
   left: 0;
   top: 100px;
-  width: 100%;
-  transform: translateX(200%);
+  width: 70%;
+  padding: 30px;
+  transform: translateX(-200%);
   transition: transform 300ms ease-in-out;
   background: linear-gradient(136.11deg, #1c2973 6.11%, #56b7e0 82.61%);
   z-index: 100;
@@ -130,60 +138,16 @@
   margin: 0;
   padding: 0;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  .headerAdmin {
-    white-space: nowrap;
-    margin: 10px;
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.39);
-    box-sizing: border-box;
-    border-radius: 5px;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
-    text-align: left;
-    letter-spacing: 0.15em;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-right: auto;
-    margin-left: auto;
-    &:hover {
-      opacity: 0.9;
-    }
-    .admin {
-      margin-left: 20px;
-    }
-  }
-  .headerDownload {
-    max-width: 190px;
-    white-space: nowrap;
-    margin: 10px;
-    background: #6754e2;
-    box-shadow: 0px 6px 20px rgba(70, 55, 172, 0.4);
-    border-radius: 5px;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
-    text-align: center;
-    letter-spacing: 0.15em;
-    &:hover {
-      opacity: 0.8;
-    }
-  }
-  @media only screen and (min-device-width: 889px) {
-    display: none;
-  }
 }
 .sidebarMenuList {
   list-style: none;
   color: #ffffff;
   font-weight: bold;
   padding: 20px;
+  margin-right: auto;
   cursor: pointer;
-  border-bottom: 1px solid #fff;
   @media only screen and (min-device-width: 320px) and (max-device-width: 520px) {
-    &:nth-child(4),
-    &:nth-child(5) {
+        &:nth-child(6) {
       padding: 0px;
     }
   }
@@ -195,7 +159,7 @@
   }
 }
 .sidebarMenuList {
-  text-align: center;
+  text-align: left;
   text-transform: capitalize;
   font-weight: bold;
   cursor: pointer;
@@ -218,10 +182,15 @@
   z-index: 100;
   height: 100%;
   width: 100%;
-  top: 40px;
-  right: 30px;
-  height: 25px;
-  max-width: 25px;
+  top: 30px;
+  left: 30px;
+  height: 45px;
+  width: 45px;
+  border-radius:50%;
+  padding-top: 6px;
+  padding-left: 4px;
+  display: flex;
+  justify-content: center;align-items: center;
   background-color: #ffffff;
   @media only screen and (min-device-width: 889px) {
     display: none;
@@ -230,3 +199,4 @@
     display: block;
   }
 }
+

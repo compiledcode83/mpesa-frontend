@@ -1,6 +1,6 @@
 .banner {
-  width: 100%;
-  height: 100vh;
+  max-width: 100vw;
+  height: 80vh;
   padding: 5% 10%;
   // background-image: url('/images/shape.svg');
   background-repeat: no-repeat;
@@ -14,7 +14,6 @@
   }
   @media screen and (max-width: 888px) {
     padding: 3% 5%;
-    margin-top: 50px;
   }
   @media screen and (max-width: 520px) {
     flex-wrap: wrap;
@@ -66,17 +65,19 @@
         font-size: 42px;
         line-height: 50px;
         margin-right: 10px;
+        text-align: left;
       }
       @media screen and (max-width: 375px) {
         font-size: 36px;
         line-height: 50px;
-        text-align: center;
+        text-align: left;
       }
     }
     .bannerDesp {
       font-size: 24px;
       line-height: 36px;
       max-width: 741px;
+      text-align: left;
       @media screen and (min-width: 1920px) {
         font-size: 36px;
         line-height: 42px;

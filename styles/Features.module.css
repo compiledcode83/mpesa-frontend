@@ -3,6 +3,13 @@
   position: relative;
   background: #f6f9ff;
   overflow: hidden;
+  padding-bottom: 5%;
+}
+
+@media screen and (min-width: 1600px) {
+  .features {
+    padding-bottom: 7%;
+  }
 }
 
 .features .shapeContainer {
@@ -202,7 +209,7 @@
   .features .featuresContainer .featuresRight .featuresRightContent .contentTitle {
     font-size: 24px;
     line-height: 31px;
-    margin-left: -50px;
+    margin-left: -40px;
   }
 }
 

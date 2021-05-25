@@ -1,5 +1,5 @@
 .banner {
-  width: 100%;
+  max-width: 100vw;
   padding: 5% 10%;
   position: relative;
   z-index: 10;
@@ -8,7 +8,6 @@
 @media screen and (max-width: 888px) {
   .banner {
     padding: 3% 5%;
-    margin-top: 50px;
   }
 }
 
@@ -94,6 +93,7 @@
     font-size: 42px;
     line-height: 50px;
     margin-right: 10px;
+    text-align: left;
   }
 }
 
@@ -101,13 +101,14 @@
   .banner .bannerTop .bannerHeader {
     font-size: 36px;
     line-height: 50px;
-    text-align: center;
+    text-align: left;
   }
 }
 
 .banner .bannerTop .bannerDesp {
   font-size: 24px;
   line-height: 36px;
+  text-align: left;
 }
 
 @media screen and (min-width: 1920px) {
@@ -278,15 +279,9 @@
   margin-top: 5%;
 }
 
-@media screen and (min-width: 1600px) {
-  .banner .bannerServicesHeader {
-    padding: 0 9%;
-  }
-}
-
 @media screen and (min-width: 1221px) {
   .banner .bannerServicesHeader {
-    padding: 0 10%;
+    padding: 0 5%;
   }
 }
 
@@ -301,7 +296,7 @@
   .banner .bannerServicesHeader {
     font-size: 36px;
     line-height: 50px;
-    text-align: center;
+    text-align: left;
   }
 }
 
@@ -376,6 +371,7 @@
     margin: 15px auto;
     min-width: 370px;
     min-height: 145px;
+    padding: 20px 30px;
   }
 }
 
@@ -406,7 +402,7 @@
   font-size: 18px;
   line-height: 32px;
   white-space: nowrap;
-  color: #6D809B;
+  color: #6d809b;
 }
 
 @media screen and (max-width: 520px) {

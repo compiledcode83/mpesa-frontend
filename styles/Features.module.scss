@@ -3,6 +3,10 @@
   position: relative;
   background: #f6f9ff;
   overflow: hidden;
+  padding-bottom: 5%;
+  @media screen and (min-width:1600px){
+    padding-bottom: 7%;
+  }
   .shapeContainer {
     position: relative;
     background: white;
@@ -128,7 +132,7 @@
           @media screen and (max-width: 520px) {
             font-size: 24px;
             line-height: 31px;
-            margin-left: -50px;
+            margin-left: -40px;
           }
           @media screen and (min-width: 1600px) {
             min-width: 380px;

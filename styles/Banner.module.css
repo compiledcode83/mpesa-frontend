@@ -1,6 +1,6 @@
 .banner {
-  width: 100%;
-  height: 100vh;
+  max-width: 100vw;
+  height: 80vh;
   padding: 5% 10%;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -23,7 +23,6 @@
 @media screen and (max-width: 888px) {
   .banner {
     padding: 3% 5%;
-    margin-top: 50px;
   }
 }
 
@@ -112,6 +111,7 @@
     font-size: 42px;
     line-height: 50px;
     margin-right: 10px;
+    text-align: left;
   }
 }
 
@@ -119,7 +119,7 @@
   .banner .bannerLeft .bannerHeader {
     font-size: 36px;
     line-height: 50px;
-    text-align: center;
+    text-align: left;
   }
 }
 
@@ -127,6 +127,7 @@
   font-size: 24px;
   line-height: 36px;
   max-width: 741px;
+  text-align: left;
 }
 
 @media screen and (min-width: 1920px) {

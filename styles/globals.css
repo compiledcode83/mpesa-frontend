@@ -4,24 +4,29 @@ html,
 body {
   padding: 0;
   margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   font-family: -apple-system, Rubik, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  width: 100%;
 }
 
-h1, h2, h3, h4, h5, p {
-  font-family: -apple-system,Source Serif Pro, Rubik, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  font-family: -apple-system, Source Serif Pro, Rubik, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
 }
 
 a {
   color: inherit;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
+ul,
 li {
-  list-style: none;
-}
-
-* {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  list-style: none !important;
+  text-decoration: none !important;
 }
 /*# sourceMappingURL=globals.css.map */
