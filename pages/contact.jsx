@@ -73,9 +73,9 @@ const Contact = () => {
               <Image src="/images/smsIcon.svg" width={35} height={35} />
             </div>
             <span className={styles.serviceRight}>
-              Youremail322@gmail.com
+              support@sevi.io
               <br />
-              antoerhone21@gmail.com
+              walter@sevi.io
             </span>
           </div>
           <div className={styles.bannerService}>

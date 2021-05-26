@@ -6,6 +6,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
+
 const Header = () => {
   const [sidebar, setSidebar] = useState(null);
   const router = useRouter();
@@ -28,8 +29,8 @@ const Header = () => {
           <li className={`${router.pathname == "/about" && styles.active}`}>
             About
           </li>
-          <li className={`${router.pathname == "/faq" && styles.active}`}>
-            FAQ
+          <li onClick={() => {router.push("https://docs.sevi.io")}} className={`${router.pathname == "https://docs.sevi.io" && styles.active}`}>
+            Docs
           </li>
           <li className={`${router.pathname == "/contact" && styles.active}`}>
             <Link href="/contact">Contact</Link>
@@ -38,7 +39,7 @@ const Header = () => {
       </div>
       <div className={styles.headerRight}>
         <div>
-          <Button className={styles.headerAdmin}>
+          <Button className={styles.headerAdmin} onClick={() => {router.push('https://admin.sevi.io') }}>
             <img src="/images/adminIcon.svg" alt="" width={15} height={15} />
             <a className={styles.admin}>ADMIN LOGIN</a>
           </Button>
@@ -47,6 +48,7 @@ const Header = () => {
           <Button
             className={styles.headerDownload}
             startEnhancer={() => <ArrowDown size={24} />}
+            onClick={() => {router.push('/app') }}
           >
             DOWNLOAD
           </Button>
@@ -87,12 +89,10 @@ const Header = () => {
           <li
             className={styles.sidebarMenuList}
           >
-            <Link href="/">About</Link>
+            <Link href="/ ">About</Link>
           </li>
-          <li
-            className={styles.sidebarMenuList}
-          >
-            <Link href="/">FAQ</Link>
+          <li className={styles.sidebarMenuList} >
+            <Link href="https://docs.sevi.io">Docs</Link>
           </li>
           <li
             onClick={() => setSidebar(false)}
