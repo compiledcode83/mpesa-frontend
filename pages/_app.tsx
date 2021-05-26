@@ -6,7 +6,7 @@ import { styletron } from '../Styletron.js'
 // import { ApolloProvider } from '@apollo/client'
 import { LightTheme, BaseProvider } from 'baseui';
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: any) {
   // const apolloClient = useApollo(pageProps.initialApolloState)
 
   return (
