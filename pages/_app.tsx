@@ -3,7 +3,7 @@ import { Provider as StyletronProvider } from 'styletron-react'
 import { styletron } from '../Styletron.js'
 import { useApollo } from '../lib/apollo'
 
-import { ApolloProvider } from '@apollo/client'
+// import { ApolloProvider } from '@apollo/client'
 import { LightTheme, BaseProvider } from 'baseui';
 
 function MyApp({ Component, pageProps }) {
@@ -11,11 +11,11 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <StyletronProvider value={styletron}>
-      <ApolloProvider client={apolloClient}>
-        <BaseProvider theme={LightTheme}>
-          <Component {...pageProps} />
-        </BaseProvider>
-      </ApolloProvider >
+      {/* <ApolloProvider client={apolloClient}> */}
+      <BaseProvider theme={LightTheme}>
+        <Component {...pageProps} />
+      </BaseProvider>
+      {/* </ApolloProvider > */}
     </StyletronProvider>
   );
 }
