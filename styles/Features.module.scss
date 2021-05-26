@@ -64,6 +64,7 @@
     font-size: 22px;
     line-height: 36px;
     text-align: center;
+    font-family: Rubik;
     color: #6d809b;
     width: 50%;
     margin-top: 20px;
@@ -122,6 +123,7 @@
           display: flex;
           flex-direction: column;
           justify-content: center;
+          font-family: RecoletaAlt;
           width: 100%;
           margin-left: -20px;
           font-weight: 600;
@@ -143,6 +145,7 @@
             line-height: 27px;
             text-align: left;
             color: #6d809b;
+            font-family: Rubik;
             @media screen and (max-width: 520px) {
               font-size: 14px;
               line-height: 23px;
@@ -192,6 +195,7 @@
           display: flex;
           flex-direction: column;
           justify-content: center;
+          font-family: RecoletaAlt;
           width: 100%;
           margin-right: -20px;
           font-weight: 600;
@@ -213,6 +217,7 @@
             line-height: 27px;
             text-align: right;
             color: #6d809b;
+            font-family: Rubik;
             @media screen and (max-width: 520px) {
               font-size: 14px;
               line-height: 23px;
