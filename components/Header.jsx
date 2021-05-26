@@ -23,12 +23,12 @@ const Header = () => {
           <li className={`${router.pathname == "/" && styles.active}`}>
             <Link href="/">Home</Link>
           </li>
-          <li className={`${router.pathname == "/features" && styles.active}`}>
+          <li className={`${router.pathname == "#" && styles.active}`}>
             Features
           </li>
-          <li className={`${router.pathname == "/about" && styles.active}`}>
+          {/* <li className={`${router.pathname == "/about" && styles.active}`}>
             About
-          </li>
+          </li> */}
           <li onClick={() => {router.push("https://docs.sevi.io")}} className={`${router.pathname == "https://docs.sevi.io" && styles.active}`}>
             Docs
           </li>
