@@ -4,9 +4,9 @@ import styles from "../styles/Banner2.module.css";
 const Banner2 = () => {
   return (
     <div className={styles.banner2}>
-      <p className={styles.banner2Image}>
+      <div className={styles.banner2Image}>
         <Image src="/images/process.svg" alt="" width={900} height={800} />
-      </p>
+      </div>
       <h1 className={styles.banner2Title}>
         Focus On
         <br />

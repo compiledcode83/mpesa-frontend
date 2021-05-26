@@ -17,7 +17,6 @@ const Header = () => {
           src="/images/logo.svg"
           width={120}
           height={80}
-          minWidth={100}
         />
         <ul className={styles.headerTabs}>
           <li className={`${router.pathname == "/" && styles.active}`}>
@@ -38,20 +37,20 @@ const Header = () => {
         </ul>
       </div>
       <div className={styles.headerRight}>
-        <p>
+        <div>
           <Button className={styles.headerAdmin}>
             <img src="/images/adminIcon.svg" alt="" width={15} height={15} />
             <a className={styles.admin}>ADMIN LOGIN</a>
           </Button>
-        </p>
-        <p>
+        </div>
+        <div>
           <Button
             className={styles.headerDownload}
             startEnhancer={() => <ArrowDown size={24} />}
           >
             DOWNLOAD
           </Button>
-        </p>
+        </div>
       </div>
       {/* Sidebar */}
       <input
@@ -70,7 +69,6 @@ const Header = () => {
           alt=""
           width={35}
           height={35}
-          backgroundColor={"white"}
         />
       </label>
       <div className={styles.sidebarMenu}>

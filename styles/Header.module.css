@@ -185,9 +185,11 @@
   height: 100%;
   position: fixed;
   left: 0;
-  top: 100px;
+  top: -20px;
   width: 70%;
+  max-width: 300px;
   padding: 30px;
+  padding-top: 120px;
   -webkit-transform: translateX(-200%);
           transform: translateX(-200%);
   -webkit-transition: -webkit-transform 300ms ease-in-out;
@@ -226,12 +228,6 @@
   }
 }
 
-@media only screen and (min-device-width: 521px) and (max-device-width: 888px) {
-  .sidebarMenuList:nth-child(4), .sidebarMenuList:nth-child(5) {
-    display: none;
-  }
-}
-
 .sidebarMenuList {
   text-align: left;
   text-transform: capitalize;
@@ -264,7 +260,7 @@
   height: 100%;
   width: 100%;
   top: 30px;
-  left: 30px;
+  left: 50px;
   height: 45px;
   width: 45px;
   border-radius: 50%;
@@ -273,6 +269,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  z-index: 101;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
