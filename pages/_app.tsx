@@ -1,13 +1,13 @@
 import "../styles/globals.css";
 import { Provider as StyletronProvider } from 'styletron-react'
 import { styletron } from '../Styletron.js'
-import { useApollo } from '../lib/apollo'
+// import { useApollo } from '../lib/apollo'
 
 // import { ApolloProvider } from '@apollo/client'
 import { LightTheme, BaseProvider } from 'baseui';
 
 function MyApp({ Component, pageProps }) {
-  const apolloClient = useApollo(pageProps.initialApolloState)
+  // const apolloClient = useApollo(pageProps.initialApolloState)
 
   return (
     <StyletronProvider value={styletron}>
