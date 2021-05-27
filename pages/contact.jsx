@@ -63,9 +63,9 @@ const Contact = () => {
               <Image src="/images/callIcon.svg" width={35} height={35} />
             </div>
             <span className={styles.serviceRight}>
-              +837 483 47835
+            +254 743 623754
               <br />
-              +545 546 4887
+              +254 724 778819
             </span>
           </div>
           <div className={styles.bannerService}>
@@ -75,7 +75,7 @@ const Contact = () => {
             <span className={styles.serviceRight}>
               support@sevi.io
               <br />
-              walter@sevi.io
+              app@sevi.io
             </span>
           </div>
           <div className={styles.bannerService}>
@@ -83,9 +83,10 @@ const Contact = () => {
               <Image src="/images/locationIcon.svg" width={35} height={35} />
             </div>
             <span className={styles.serviceRight}>
-              123,youraddress,
-              <br />
-              your road.office number
+            Rattansi Educational Trust Building,       <br />
+3rd Floor, Suite E12,       <br />
+Koinange Street,       
+Nairobi    
             </span>
           </div>
         </div>

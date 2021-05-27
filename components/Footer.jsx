@@ -8,7 +8,7 @@ const Footer = () => {
     <div className={styles.footer}>
       <div className={styles.footerContainer}>
         <ul className={styles.footerHeader}>
-          <li className={styles.footerTab}>Community</li>
+          {/* <li className={styles.footerTab}>Community</li> */}
           {/* <li className={styles.footerTab}>For Talents</li>
           <li className={styles.footerTab}>For Companies</li>
           <li className={styles.footerTab}>Facebook Group</li>
