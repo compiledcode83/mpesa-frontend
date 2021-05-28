@@ -48,7 +48,7 @@ const Header = () => {
           <Button
             className={styles.headerDownload}
             startEnhancer={() => <ArrowDown size={24} />}
-            onClick={() => {router.push('/app') }}
+            onClick={() => {router.push('https://sevi.io/app') }}
           >
             DOWNLOAD
           </Button>
