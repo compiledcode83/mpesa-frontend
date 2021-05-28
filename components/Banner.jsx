@@ -2,8 +2,10 @@ import Image from "next/image";
 import styles from "../styles/Banner.module.css";
 import { Button } from "baseui/button";
 import ChevronRight from "baseui/icon/chevron-right";
+import { useRouter } from "next/router";
 
 const Banner = () => {
+  const router = useRouter();
   return (
     <div className={styles.banner}>
       <img className={styles.bannerBg} src="/images/shape.svg" alt="" />
@@ -15,6 +17,7 @@ const Banner = () => {
         </p>
         <Button
           className={styles.bannerButton}
+          onClick={() => {router.push('https://sevi.io/app') }}
           endEnhancer={() => <ChevronRight size={24} />}
         >
           INSTALL APP

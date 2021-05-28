@@ -6,7 +6,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-
 const Header = () => {
   const [sidebar, setSidebar] = useState(null);
   const router = useRouter();
