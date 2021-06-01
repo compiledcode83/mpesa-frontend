@@ -7,6 +7,7 @@ const Features = () => {
       <section className={style.shapeContainer}>
   <div className={style.wave}></div>
 </section>
+<a id='features' />
       <h1 className={style.featuresTitle}>The Sevi App
       <br/>
       <span className={style.featuresDesp}>

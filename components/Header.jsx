@@ -22,7 +22,7 @@ const Header = () => {
           <li className={`${router.pathname == "/" && styles.active}`}>
             <Link href="/">Home</Link>
           </li>
-          <li className={`${router.pathname == "#" && styles.active}`}>
+          <li onClick={() => {router.push("/#features")}} className={`${router.pathname == "/#features" && styles.active}`}>
             Features
           </li>
           {/* <li className={`${router.pathname == "/about" && styles.active}`}>

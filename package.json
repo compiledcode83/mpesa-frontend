@@ -15,6 +15,7 @@
     "apollo-server-micro": "^2.16.1",
     "baseui": "^9.115.2",
     "bowser": "^2.11.0",
+    "emailjs-com": "^2.6.4",
     "graphql": "15.3.0",
     "next": "latest",
     "react": "^17.0.2",

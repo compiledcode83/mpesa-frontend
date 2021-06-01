@@ -17,7 +17,7 @@
   left: 0;
   width: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   z-index: -1;
   pointer-events: none;
 }
@@ -52,14 +52,14 @@
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     width: 100%;
   }
 }
@@ -139,11 +139,11 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   z-index: 2;
 }
 
@@ -164,9 +164,9 @@
   background: #ffffff;
   border: 1px solid #d9d9d9;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   -webkit-box-shadow: 0px 4px 72px rgba(103, 103, 103, 0.11);
-          box-shadow: 0px 4px 72px rgba(103, 103, 103, 0.11);
+  box-shadow: 0px 4px 72px rgba(103, 103, 103, 0.11);
   border-radius: 33px;
   margin: 0 auto;
   padding: 3%;
@@ -204,7 +204,7 @@
   background: #f8f8f8;
   border: 1px solid #d3d3d3;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   border-radius: 4px;
   font-size: 1.3rem;
   line-height: 2rem;
@@ -217,7 +217,7 @@
 
 @media screen and (min-width: 1520px) {
   .banner .bannerBottom .bannerForm .bannerInput {
-    font-size: 2.2rem;
+    font-size: 1.2rem;
     line-height: 3.5rem;
     padding: 15px;
     margin-bottom: 25px;
@@ -228,7 +228,7 @@
   width: 100%;
   background: #6754e2;
   -webkit-box-shadow: 0px 6px 20px rgba(70, 55, 172, 0.4);
-          box-shadow: 0px 6px 20px rgba(70, 55, 172, 0.4);
+  box-shadow: 0px 6px 20px rgba(70, 55, 172, 0.4);
   border-radius: 5px;
   border: none;
   padding: 10px;
@@ -311,11 +311,11 @@
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
   }
 }
 
@@ -325,11 +325,11 @@
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     -webkit-box-pack: space-evenly;
-        -ms-flex-pack: space-evenly;
-            justify-content: space-evenly;
+    -ms-flex-pack: space-evenly;
+    justify-content: space-evenly;
   }
 }
 
@@ -338,11 +338,11 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   border: 1px solid #e7e7e7;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   border-radius: 4px;
   padding: 10px;
   margin: 15px;
@@ -359,8 +359,8 @@
   .banner .bannerServices .bannerService {
     max-width: 400px;
     -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: start;
+    -ms-flex-pack: start;
+    justify-content: start;
     margin: 15px auto;
     padding: 10px 40px;
   }
@@ -379,10 +379,16 @@
   padding: 20px;
   border-radius: 50%;
   border: none;
-  background: -webkit-gradient(linear, left top, left bottom, from(#9c7bfb), to(#6231ee));
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#9c7bfb),
+    to(#6231ee)
+  );
   background: linear-gradient(180deg, #9c7bfb 0%, #6231ee 100%);
   -webkit-box-shadow: 0px 10px 30px rgba(98, 49, 238, 0.45);
-          box-shadow: 0px 10px 30px rgba(98, 49, 238, 0.45);
+  box-shadow: 0px 10px 30px rgba(98, 49, 238, 0.45);
 }
 
 @media screen and (max-width: 520px) {
