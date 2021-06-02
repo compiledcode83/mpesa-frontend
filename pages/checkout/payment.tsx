@@ -41,7 +41,7 @@ export default function Payment() {
                     Order successfull
                 </StyledTitle>
                 <StyledBody>
-                    Order was succesfull open the app to
+                    To proceed select your payment plan in the app.
                 </StyledBody>
                 <StyledAction>
                     <Button onClick={() => router.push('https://sevi.io/app')} overrides={{ BaseButton: { style: { width: '100%' } } }}>
