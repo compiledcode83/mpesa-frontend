@@ -38,7 +38,7 @@ export default function Payment() {
                     />
                 </div>
                 <StyledTitle overrides={{ BaseButton: { style: { width: '100%' } } }}>
-                    Order successfull
+                    Order successful
                 </StyledTitle>
                 <StyledBody>
                     To proceed, select your payment plan in the app.
