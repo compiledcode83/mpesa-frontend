@@ -10,7 +10,7 @@ const Banner = () => {
     <div className={styles.banner}>
       <img className={styles.bannerBg} src="/images/shape.svg" alt="" />
       <div className={styles.bannerLeft}>
-        <h1 className={styles.bannerHeader}>Buy now, Pay Later</h1>
+        <h1 className={styles.bannerHeader}>Order now, Pay Later</h1>
         <p className={styles.bannerDesp}>
           Buy products and pay for them later
         </p>
