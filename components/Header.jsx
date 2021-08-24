@@ -28,7 +28,7 @@ const Header = () => {
           {/* <li className={`${router.pathname == "/about" && styles.active}`}>
             About
           </li> */}
-          <li onClick={() => {router.push("https://docs.sevi.io")}} className={`${router.pathname == "https://docs.sevi.io" && styles.active}`}>
+          <li onClick={() => {router.push("https://docs.sevi.io/docs/intro")}} className={`${router.pathname == "https://docs.sevi.io/docs/intro" && styles.active}`}>
             Docs
           </li>
           <li className={`${router.pathname == "/contact" && styles.active}`}>
