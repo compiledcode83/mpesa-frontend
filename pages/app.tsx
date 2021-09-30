@@ -13,9 +13,11 @@ export default class extends React.Component {
             Location: "sevi://notifications?id=com.sevi.sevi"
           });
         }, 50);
-        ctx.res.writeHead(302, {
-          Location: "market://details?id=com.sevi.sevi"
-        });
+        setTimeout(function () {
+          ctx.res.writeHead(302, {
+            Location: "market://details?id=com.sevi.sevi"
+          });
+        }, 50);
         ctx.res.writeHead(302, {
           Location:
             "https://play.google.com/store/apps/details?id=com.sevi.sevi"
