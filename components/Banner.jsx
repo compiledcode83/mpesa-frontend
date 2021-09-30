@@ -15,7 +15,7 @@ const Banner = () => {
           Buy products and pay for them later
         </p>
         <Button
-          className={styles.bannerButton}
+          // className={styles.bannerButton}
           onClick={() => {router.push('https://sevi.io/app') }}
           endEnhancer={() => <ChevronRight size={24} />}
         >
