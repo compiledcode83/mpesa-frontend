@@ -10,13 +10,18 @@ export default class extends React.Component {
       if (platform.type === "mobile") {
         setTimeout(function () {
           ctx.res.writeHead(302, {
-            Location: "market://details?id=com.sevi.sevi"
+            Location: "sevi://notifications?id=com.sevi.sevi"
           });
-        }, 25);
+        }, 50);
         ctx.res.writeHead(302, {
-          Location: "sevi://notifications?id=com.sevi.sevi"
+          Location: "market://details?id=com.sevi.sevi"
+        });
+        ctx.res.writeHead(302, {
+          Location:
+            "https://play.google.com/store/apps/details?id=com.sevi.sevi"
         });
         ctx.res.end();
+
         return {}
       } else {
         ctx.res.writeHead(302, {
