@@ -8,12 +8,12 @@ const Video = () => {
     <div className={styles.banner2}>
       
       <h1 className={styles.banner2Title}>
-       Text for
+       Demo
         <br />
-        demo video
+         video
                 <br />
         <span className={styles.banner2Desp}>
-        some fancy tagline.
+       Check how it works
 
         {" "}
         </span>
