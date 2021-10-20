@@ -4,6 +4,7 @@ import Banner from "../components/Banner";
 import Banner2 from "../components/Banner2";
 import Features from "../components/Features";
 import Footer from "../components/Footer";
+import Video from "../components/video";
 
 export default function Home() {
   return (
@@ -35,6 +36,7 @@ export default function Home() {
       <Header />
       <Banner />
       <Banner2 />
+      <Video />
       <Features />
       <Footer />
     </>
