@@ -1,5 +1,8 @@
 import Image from "next/image";
 import styles from "../styles/Banner2.module.css";
+import { Button } from "baseui/button";
+import ChevronRight from "baseui/icon/chevron-right";
+import { useRouter } from "next/router";
 
 const Banner2 = () => {
   return (

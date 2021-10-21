@@ -10,10 +10,10 @@ const Banner = () => {
     <div className={styles.banner}>
       <img className={styles.bannerBg} src="/images/shape.svg" alt="" />
       <div className={styles.bannerLeft}>
-        <h1 className={styles.bannerHeader}> Hello, Sevi shoppers</h1>
+        <h1 className={styles.bannerHeader}> Order now, Pay later</h1>
         <p className={styles.bannerDesp}>
-          Looking for a better way to pay over time?
-          Buy products now and pay for them later with no hidden fees.
+          Are you paying in cash and tying up your capital in stock? <br />
+          Get Sevi now, to buy more and sell more.  
         </p>
         <Button
           className={styles.bannerButton}
