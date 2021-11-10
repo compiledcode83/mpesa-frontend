@@ -115,9 +115,10 @@ const Contact = () => {
               <Image src="/images/callIcon.svg" width={35} height={35} />
             </div>
             <span className={styles.serviceRight}>
-              +254 743 623 754
+              Support +254 743 623 754
               <br />
-              +254 719 767 616
+              Sales +254 719 767 616
+              Office +254 20 298 8000
             </span>
           </div>
           <div className={styles.bannerService}>
@@ -127,7 +128,7 @@ const Contact = () => {
             <span className={styles.serviceRight}>
               support@sevi.io
               <br />
-              app@sevi.io
+              partner@sevi.io
             </span>
           </div>
           <div className={styles.bannerService}>
@@ -135,10 +136,10 @@ const Contact = () => {
               <Image src="/images/locationIcon.svg" width={35} height={35} />
             </div>
             <span className={styles.serviceRight}>
-              Rattansi Educational Trust Building,       <br />
-              3rd Floor, Suite E12,       <br />
-              Koinange Street,
-              Nairobi
+              Luthers Plaza      <br />
+              1st Floor, Left wing   <br />
+              Nyerere Road, Nairobi <br />
+              PO Box: 41987-00100 Nairobi GPO
             </span>
           </div>
         </div>
