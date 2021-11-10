@@ -38,9 +38,9 @@ const Header = () => {
       </div>
       <div className={styles.headerRight}>
         <div>
-          <Button className={styles.headerAdmin} onClick={() => {router.push('https://admin.sevi.io') }}>
+          <Button className={styles.headerAdmin} onClick={() => {router.push('https://forms.gle/KvNxBHaUQKEQe5zNA') }}>
             <img src="/images/adminIcon.svg" alt="" width={15} height={15} />
-            <a className={styles.admin}>ADMIN LOGIN</a>
+            <a className={styles.admin}>  APPLY NOW</a>
           </Button>
         </div>
         <div>
