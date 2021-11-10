@@ -118,6 +118,7 @@ const Contact = () => {
               Support +254 743 623 754
               <br />
               Sales +254 719 767 616
+              <br />
               Office +254 20 298 8000
             </span>
           </div>
