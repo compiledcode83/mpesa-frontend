@@ -140,7 +140,7 @@ const Contact = () => {
               Luthers Plaza      <br />
               1st Floor, Left wing   <br />
               Nyerere Road, Nairobi <br />
-              PO Box: 41987-00100 Nairobi GPO
+              PO Box: 41987-00100 GPO
             </span>
           </div>
         </div>
