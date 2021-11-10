@@ -15,7 +15,7 @@ const Contact = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
-  const SendEmail = async (e) => {   
+  const SendEmail = async (e) => {
     e.preventDefault()
 
     console.log('send email')
@@ -26,32 +26,32 @@ const Contact = () => {
       number,
       subject: 'support request',
       message,
-     }   
-    
-     try {
+    }
+
+    try {
       const email = await send(
         'gmail',
         'template_9dkmpw5',
-         templateParams,
+        templateParams,
         'user_CQve8inPJM2qjaMb2Frzn'
-       )   
-       console.log('email:', email)
-     } catch(err) {
-       console.log('err:', err)
-      }
+      )
+      console.log('email:', email)
+    } catch (err) {
+      console.log('err:', err)
+    }
 
     toaster.positive("Message is send")
   }
 
   return (
-<ToasterContainer  overrides={{
-        Root: {
-          style: ({ $theme }) => ({
-            zIndex: '999999999999999'
-          })
-        }
-      }}>
-      
+    <ToasterContainer overrides={{
+      Root: {
+        style: ({ $theme }) => ({
+          zIndex: '999999999999999'
+        })
+      }
+    }}>
+
 
       <Head>
         <title>Sevi - Contact</title>
@@ -103,7 +103,7 @@ const Contact = () => {
               className={styles.bannerInput}
               onChange={(e) => setMessage(e.target.value)}
             />
-                  <Button onClick={SendEmail}>SEND MESSAGE</Button>
+            <Button onClick={SendEmail}>SEND MESSAGE</Button>
             {/* <button onClick={SendEmail}>SEND MESSAGE</button> */}
           </form>
 
@@ -115,9 +115,9 @@ const Contact = () => {
               <Image src="/images/callIcon.svg" width={35} height={35} />
             </div>
             <span className={styles.serviceRight}>
-            +254 743 623754
+              +254 743 623 754
               <br />
-              +254 724 778819
+              +254 719 767 616
             </span>
           </div>
           <div className={styles.bannerService}>
@@ -135,16 +135,16 @@ const Contact = () => {
               <Image src="/images/locationIcon.svg" width={35} height={35} />
             </div>
             <span className={styles.serviceRight}>
-            Rattansi Educational Trust Building,       <br />
-3rd Floor, Suite E12,       <br />
-Koinange Street,       
-Nairobi    
+              Rattansi Educational Trust Building,       <br />
+              3rd Floor, Suite E12,       <br />
+              Koinange Street,
+              Nairobi
             </span>
           </div>
         </div>
       </div>
       <Footer />
-      </ToasterContainer>
+    </ToasterContainer>
 
   );
 };
