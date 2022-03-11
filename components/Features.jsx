@@ -58,11 +58,10 @@ const Features = () => {
           <div className={style.featuresRightContent}>
             <img src="/images/cart.svg" className={style.contentImg} alt="" width={118} height={118} />
             <p className={style.contentTitle}>
-              Webshop template
+              ERP integration
               <br />
               <span className={style.contentDesp}>
-                Don't have a web shop yet? No worries, we provide you with a
-                webshop, only load your products and your are good to go.
+                Create orders through your regular process and connect your ERP to our open API. 
               </span>
             </p>
           </div>

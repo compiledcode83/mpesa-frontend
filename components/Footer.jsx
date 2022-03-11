@@ -39,7 +39,7 @@ const Footer = () => {
         </ul>
       </div>
       <span className={styles.footerBottom}>
-        Copyright 2021. All rights reserved by us
+        Copyright 2022. All rights reserved by us
       </span>
     </div>
   );
