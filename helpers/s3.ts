@@ -3,14 +3,15 @@ import { S3Client, S3 } from "@aws-sdk/client-s3";
 
 
 const credentials = {
-    accessKeyId: 'AKIAYAMMCWGLJJNZY6DL',
-    secretAccessKey: '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'
+    // accessKeyId: 'AKIAYAMMCWGLDUJQ2MCX',
+    // secretAccessKey: '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'
 }
 
 export const sendToS3 = (files, folder) => {
-    // console.log('folder:', folder)
+    console.log('folder:', folder)
     files.map(async (file) => {
-        const target = { Bucket: 'sevi-documents', Key: `${folder}/${file.name}`, Body: file };
+        console.log('file:', file)
+        const target = { Bucket: 'sevi-mpesa-statements', Key: `locked/${file.name}`, Body: file };
         try {
             const parallelUploads3 = new Upload({
                 client: new S3({ region: "eu-central-1", credentials }) || new S3Client({
@@ -37,7 +38,7 @@ export const sendToS3 = (files, folder) => {
 
 export const folderHasItems = async (folder) => {
     const s3 = new S3({ region: "eu-central-1", credentials })
-    const objects = await s3.listObjectsV2({ Bucket: 'sevi-mpesaStatements', Prefix: folder })
+    const objects = await s3.listObjectsV2({ Bucket: 'sevi-mpesa-statements', Prefix: folder })
     console.log('objects:', objects)
     if (objects.KeyCount > 0) {
         return true

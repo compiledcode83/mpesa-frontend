@@ -77,6 +77,7 @@ export const FilePicker = ({ fileSelected, done }) => {
             }
         }}
         errorMessage={errorMessage}
+        // disabled
         // accept={ }
         // progressAmount is a number from 0 - 100 which indicates the percent of file transfer completed
         progressAmount={progressAmount}
