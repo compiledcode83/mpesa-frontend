@@ -62,6 +62,7 @@ export const FilePicker = ({ fileSelected, done }) => {
 
     return <FileUploader
         onCancel={stopFakeProgress}
+        accept={'application/pdf'}
         onDrop={async (acceptedFiles, rejectedFiles) => {
             if (rejectedFiles.length > 0) {
                 setErrorMessage(`upload error for ${rejectedFiles[0]?.name}`)

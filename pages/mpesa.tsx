@@ -1,62 +1,106 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 import { ListItem, ListItemLabel } from 'baseui/list';
 import { useStyletron } from 'baseui';
 import { Button } from 'baseui/button';
-import { Check, Delete } from 'baseui/icon';
+// import { Check, Delete } from 'baseui/icon';
 import { FilePicker } from '../components/Uploader/fileUploader';
 import { folderHasItems, sendToS3 } from '../helpers/s3';
 import { Input } from "baseui/input";
+import { Check } from "baseui/icon";
+import { Card, StyledBody } from 'baseui/card';
+import { sendFileToBackend } from '../helpers/sendFileToBackend';
 
 const SellerDocs = () => {
     const [css] = useStyletron();
-    const [password, setPassword] = useState('');
+
     const [refresh, setRefresh] = useState(false)
+    const [fileList, setFileList] = useState([])
+
 
     const fileSelected = async (files, item) => {
-        console.log('files:', files)
-        // const folder = `${account}/${item.filePath}`
-        await sendToS3(files)
-        // upload done
+        try {
+            // const file = await sendToS3(files)
+            const file = await sendFileToBackend(files)
+            // console.log('file: afterup', file)
+            setFileList([...fileList, ...file])
+        } catch (err) {
+            throw new Error(err)
+        }
     }
 
     const done = () => {
         setRefresh(true)
     }
 
-    const Items = () => {
-        return documents.map((item) => {
-            return
+    const downloadExcelFile = () => {
+        console.log('sgtart')
+
+
+    }
+
+    const UploadFiles = () => {
+        return fileList.map((file) => {
+            const [password, setPassword] = useState('');
+            console.log('file:list', file)
+            return (
+                <div key={file.filename} style={{ marginTop: 50 }}>
+                    <Card overrides={{ Root: { style: {} } }}>
+                        <StyledBody>
+                            <div>
+                                FileName = {file.originalname}
+                            </div>
+                            <div style={{ marginTop: 20, width: 250 }}>
+                                <Input
+                                    value={password}
+                                    type="password"
+                                    onChange={e => setPassword(e.target.value)}
+                                    placeholder="Mpesa Document password"
+                                    clearOnEscape
+                                />
+                            </div>
+                            <div style={{ marginTop: 20 }}>
+                                <Button onClick={downloadExcelFile}>Get Excel File</Button>
+                            </div>
+
+                        </StyledBody>
+                    </Card>
+                </div>
+            )
         })
+
     }
 
 
     const UploadFile = () => {
-        if (password.length === '')
-            return (
-                <div
-                    className={css({
-                        // width: '375px',
-                        paddingLeft: 0,
-                        paddingRight: 0,
-                    })}
-                >
-                    <div style={{ marginBottom: 30 }}>
-                        <ListItem>
-                            <ListItemLabel description='Upload your mpesa statement to get instant feedback' >{'Get mpesa analytics back'}</ListItemLabel>
-                        </ListItem>
-                        <FilePicker fileSelected={(files) => fileSelected(files)} done={done} />
+        return (
+            <div
+                className={css({
+                    // width: '375px',
+                    paddingLeft: 0,
+                    paddingRight: 0,
+                })}
+            >
+                <div style={{ marginBottom: 30 }}>
+                    <ListItem>
+                        <ListItemLabel description='Upload your mpesa statement to get instant feedback' >{'Get mpesa analytics back'}</ListItemLabel>
+                    </ListItem>
+                    <FilePicker fileSelected={(files) => fileSelected(files)} done={done} />
 
-                    </div>
-
-
-                    <div style={{ marginTop: 20 }}>
-                        <Button onClick={() => alert("click")}>Get results</Button>
-
-                    </div>
                 </div>
 
-            )
+
+                {/* <div style={{ marginTop: 20 }}>
+                    <Button onClick={() => alert("click")}>Get results</Button>
+
+                </div>
+
+                <div style={{ marginTop: 20 }}>
+                    <Button onClick={() => alert("click")}>Download Excel file</Button>
+                </div> */}
+            </div>
+
+        )
     }
 
     return (
@@ -84,17 +128,11 @@ const SellerDocs = () => {
                     Convert many mpesa statement at once using our tool hence saving on time.
                 </p>
             </div>
-            <div style={{ marginTop: 50 }}>
-                <Input
-                    value={password}
-                    type="password"
-                    onChange={e => setPassword(e.target.value)}
-                    placeholder="Mpesa Document password"
-                    clearOnEscape
-                />
-            </div>
+
 
             <UploadFile />
+
+            <UploadFiles />
         </div>
 
 
