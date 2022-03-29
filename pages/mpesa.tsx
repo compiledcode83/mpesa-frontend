@@ -10,13 +10,13 @@ import { Input } from "baseui/input";
 import { Check } from "baseui/icon";
 import { Card, StyledBody } from 'baseui/card';
 import { sendFileToBackend } from '../helpers/sendFileToBackend';
+import { saveAs } from 'file-saver';
 
 const SellerDocs = () => {
     const [css] = useStyletron();
 
     const [refresh, setRefresh] = useState(false)
     const [fileList, setFileList] = useState([])
-
 
     const fileSelected = async (files, item) => {
         try {
@@ -33,15 +33,30 @@ const SellerDocs = () => {
         setRefresh(true)
     }
 
-    const downloadExcelFile = () => {
-        console.log('sgtart')
 
+    const downloadExcelFile = async (file, password, setDownload) => {
+        try {
+            setDownload(true)
+            console.log('start')
+            const url = `http://localhost:8001/file/download/${file}.xlsx?password=${password}`
+            const start = await fetch(url, { method: 'GET' })
+            const fileBlob = await start.blob()
+            await saveAs(fileBlob, 'file.xlsx');
+            console.log('stop')
+            setDownload(false)
+        } catch (err) { throw new Error('password incorrect') }
 
+    }
+
+    const buttonDisabled = (password) => {
+        if (password.length > 8) return false
+        return true
     }
 
     const UploadFiles = () => {
         return fileList.map((file) => {
             const [password, setPassword] = useState('');
+            const [download, setDownload] = useState(false)
             console.log('file:list', file)
             return (
                 <div key={file.filename} style={{ marginTop: 50 }}>
@@ -60,7 +75,7 @@ const SellerDocs = () => {
                                 />
                             </div>
                             <div style={{ marginTop: 20 }}>
-                                <Button onClick={downloadExcelFile}>Get Excel File</Button>
+                                <Button onClick={() => downloadExcelFile(file.filename, password, setDownload)} isLoading={download} disabled={buttonDisabled(password)}>Get Excel File</Button>
                             </div>
 
                         </StyledBody>
