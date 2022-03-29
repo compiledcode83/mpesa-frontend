@@ -5,9 +5,9 @@ import { useStyletron } from 'baseui';
 import { Button } from 'baseui/button';
 // import { Check, Delete } from 'baseui/icon';
 import { FilePicker } from '../components/Uploader/fileUploader';
-import { folderHasItems, sendToS3 } from '../helpers/s3';
+// import { folderHasItems, sendToS3 } from '../helpers/s3';
 import { Input } from "baseui/input";
-import { Check } from "baseui/icon";
+// import { Check } from "baseui/icon";
 import { Card, StyledBody } from 'baseui/card';
 import { sendFileToBackend } from '../helpers/sendFileToBackend';
 import { saveAs } from 'file-saver';
@@ -37,12 +37,10 @@ const SellerDocs = () => {
     const downloadExcelFile = async (file, password, setDownload) => {
         try {
             setDownload(true)
-            console.log('start')
-            const url = `http://localhost:8001/file/download/${file}.xlsx?password=${password}`
+            const url = `${process.env.NEXT_PUBLIC_MANAGER_HOST}/file/download/${file}.xlsx?password=${password}`
             const start = await fetch(url, { method: 'GET' })
             const fileBlob = await start.blob()
             await saveAs(fileBlob, 'file.xlsx');
-            console.log('stop')
             setDownload(false)
         } catch (err) { throw new Error('password incorrect') }
 
@@ -104,15 +102,6 @@ const SellerDocs = () => {
 
                 </div>
 
-
-                {/* <div style={{ marginTop: 20 }}>
-                    <Button onClick={() => alert("click")}>Get results</Button>
-
-                </div>
-
-                <div style={{ marginTop: 20 }}>
-                    <Button onClick={() => alert("click")}>Download Excel file</Button>
-                </div> */}
             </div>
 
         )
