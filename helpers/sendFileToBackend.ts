@@ -1,7 +1,7 @@
 const FormData = require('form-data');     
 // import fetch from 'node-fetch'
 
-export const sendFileToBackend = async (files) => {
+export const sendFileToBackend = async (files: any) => {
     try {
         const body = new FormData();
         for(const file of files) {

@@ -7,9 +7,9 @@ const credentials = {
     secretAccessKey: 'WJv82+K538krIOiBPnQpaGgKsI8vM7Qix5L6tIy9'
 }
 
-export const sendToS3 = async  (files, folder) => {
+export const sendToS3 = async  (files: any) => {
     // console.log('folder:', folder)
-   const list = await Promise.all(files.map(async (file) => {
+   const list = await Promise.all(files.map(async (file: any) => {
         const target = { Bucket: 'sevi-external-financial-statements', Key: `locked/${file.name}`, Body: file };
         try {
             const parallelUploads3 = new Upload({
@@ -44,12 +44,12 @@ export const sendToS3 = async  (files, folder) => {
 }
 
 
-export const folderHasItems = async (folder) => {
-    const s3 = new S3({ region: "eu-central-1", credentials })
-    const objects = await s3.listObjectsV2({ Bucket: 'sevi-mpesa-statements', Prefix: folder })
-    console.log('objects:', objects)
-    if (objects.KeyCount > 0) {
-        return true
-    }
-    return false
-}
+// export const folderHasItems = async (folder:any) => {
+//     const s3 = new S3({ region: "eu-central-1", credentials })
+//     const objects = await s3.listObjectsV2({ Bucket: 'sevi-mpesa-statements', Prefix: folder })
+//     console.log('objects:', objects)
+//     if (objects.KeyCount > 0) {
+//         return true
+//     }
+//     return false
+// }

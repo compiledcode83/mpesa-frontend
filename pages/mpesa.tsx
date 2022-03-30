@@ -1,24 +1,18 @@
-import React, { useEffect, useState } from 'react';
-// import { useLocation } from "react-router-dom";
+import React, { useState } from 'react';
 import { ListItem, ListItemLabel } from 'baseui/list';
 import { useStyletron } from 'baseui';
 import { Button } from 'baseui/button';
-// import { Check, Delete } from 'baseui/icon';
 import { FilePicker } from '../components/Uploader/fileUploader';
-// import { folderHasItems, sendToS3 } from '../helpers/s3';
 import { Input } from "baseui/input";
-// import { Check } from "baseui/icon";
 import { Card, StyledBody } from 'baseui/card';
 import { sendFileToBackend } from '../helpers/sendFileToBackend';
 import { saveAs } from 'file-saver';
 
 const SellerDocs = () => {
     const [css] = useStyletron();
+    const [fileList, setFileList] = useState<any[]>([])
 
-    const [refresh, setRefresh] = useState(false)
-    const [fileList, setFileList] = useState([])
-
-    const fileSelected = async (files, item) => {
+    const fileSelected = async (files: any) => {
         try {
             // const file = await sendToS3(files)
             const file = await sendFileToBackend(files)
@@ -29,12 +23,7 @@ const SellerDocs = () => {
         }
     }
 
-    const done = () => {
-        setRefresh(true)
-    }
-
-
-    const downloadExcelFile = async (file, password, setDownload) => {
+    const downloadExcelFile = async (file: any, password: string, setDownload: any) => {
         try {
             setDownload(true)
             const url = `${process.env.NEXT_PUBLIC_MANAGER_HOST}/file/download/${file}.xlsx?password=${password}`
@@ -46,7 +35,7 @@ const SellerDocs = () => {
 
     }
 
-    const buttonDisabled = (password) => {
+    const buttonDisabled = (password: string) => {
         if (password.length > 8) return false
         return true
     }
@@ -55,7 +44,6 @@ const SellerDocs = () => {
         return fileList.map((file) => {
             const [password, setPassword] = useState('');
             const [download, setDownload] = useState(false)
-            console.log('file:list', file)
             return (
                 <div key={file.filename} style={{ marginTop: 50 }}>
                     <Card overrides={{ Root: { style: {} } }}>
@@ -67,7 +55,11 @@ const SellerDocs = () => {
                                 <Input
                                     value={password}
                                     type="password"
-                                    onChange={e => setPassword(e.target.value)}
+                                    onChange={(e): any => {
+                                        const text: any = e.target as Element
+                                        setPassword(text.value)
+                                    }
+                                    }
                                     placeholder="Mpesa Document password"
                                     clearOnEscape
                                 />
@@ -80,7 +72,7 @@ const SellerDocs = () => {
                     </Card>
                 </div>
             )
-        })
+        }) as any
 
     }
 
@@ -98,7 +90,7 @@ const SellerDocs = () => {
                     <ListItem>
                         <ListItemLabel description='Upload your mpesa statement to get instant feedback' >{'Get mpesa analytics back'}</ListItemLabel>
                     </ListItem>
-                    <FilePicker fileSelected={(files) => fileSelected(files)} done={done} />
+                    <FilePicker fileSelected={(files): any => fileSelected(files)} />
 
                 </div>
 

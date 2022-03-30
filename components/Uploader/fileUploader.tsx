@@ -46,7 +46,7 @@ function useFakeProgress(): [number, () => void, () => void] {
     return [fakeProgress, startFakeProgress, stopFakeProgress];
 }
 
-export const FilePicker = ({ fileSelected, done }) => {
+export const FilePicker = ({ fileSelected, done }: any) => {
     const [
         progressAmount,
         startFakeProgress,
