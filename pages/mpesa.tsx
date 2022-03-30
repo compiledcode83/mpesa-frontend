@@ -22,7 +22,6 @@ const SellerDocs = () => {
         }
     }
 
-
     const downloadExcelFile = async (file: any, password: string, setDownload: any) => {
         try {
             setDownload(true)
@@ -32,7 +31,6 @@ const SellerDocs = () => {
             await saveAs(fileBlob, 'file.xlsx');
             setDownload(false)
         } catch (err) { throw new Error('password incorrect') }
-
     }
 
     const buttonDisabled = (password: string) => {
@@ -82,7 +80,7 @@ const SellerDocs = () => {
                 { title }
             </h3>
             <p style={{ marginTop: 10 }}>
-                { description }
+                {description}
             </p>
         </>
     );
@@ -98,7 +96,7 @@ const SellerDocs = () => {
             >
                 <div style={{ marginBottom: 30 }}>
                     <PitchText title="Get mpesa analytics back" description="Upload your mpesa statement to get instant feedback" fontSize={20} />
-                    
+
                     <FilePicker fileSelected={(files): any => fileSelected(files)} />
 
                 </div>

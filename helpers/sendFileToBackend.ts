@@ -10,10 +10,10 @@ export const sendFileToBackend = async (files: any) => {
     
         const query  = {
           method: "POST",
-        //   mode:  "no-cors", // 'cors' by default
+          mode:  "no-cors", // 'cors' by default
           body,
-          cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-          credentials: 'same-origin', // include, *same-origin, omit
+          // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+          // credentials: 'same-origin', // include, *same-origin, omit
         } as any
         
         const response = await fetch(`${process.env.NEXT_PUBLIC_MANAGER_HOST}/file/uploadMultiFiles`, query );
