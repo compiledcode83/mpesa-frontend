@@ -74,12 +74,12 @@ const SellerDocs = () => {
 
     }
 
-    const PitchText = ({ title, description, fontSize = 16 }: { title: string, description: string, fontSize?: number }) => (
+    const PitchText = ({ title, description, fontSize = 16, color = 'white', spacing = 0 }: { title: string, description: string, fontSize?: number, color?: string, spacing?: number }) => (
         <>
-            <h3 style={{ color: '#1c2973', marginBottom: 0, fontSize: fontSize }}>
+            <h3 style={{ color: color, marginBottom: 0, fontSize: fontSize }}>
                 { title }
             </h3>
-            <p style={{ marginTop: 10 }}>
+            <p style={{ color: color === 'white' ? color : undefined, marginTop: spacing }}>
                 {description}
             </p>
         </>
@@ -95,10 +95,11 @@ const SellerDocs = () => {
                 })}
             >
                 <div style={{ marginBottom: 30 }}>
-                    <PitchText title="Get mpesa analytics back" description="Upload your mpesa statement to get instant feedback" fontSize={20} />
+                    <PitchText title="Get mpesa analytics back" description="Upload your mpesa statement to get instant feedback" fontSize={20} color='#1c2973' spacing={10} />
 
-                    <FilePicker fileSelected={(files): any => fileSelected(files)} />
-
+                    <div style={{ paddingTop: 10 }}>
+                        <FilePicker fileSelected={(files): any => fileSelected(files)} />
+                    </div>
                 </div>
 
             </div>
@@ -108,10 +109,11 @@ const SellerDocs = () => {
 
     return (
         <div style={{ maxWidth: 1024, margin: 'auto', padding: 20 }}>
-            <h1 style={{ color: '#1c2973' }}>Free mpesa statement anayzer</h1>
+            
+            <h1 style={{ color: '#1c2973' }}>Free Mpesa statement analyzer</h1>
 
             {/* inspiration from https://www.mpesanalyser.com/ */}
-            <div>
+            <div style={{ backgroundColor: '#1c2973', paddingLeft: 20, paddingTop: 10, paddingBottom: 10, borderRadius: 10, marginBottom: 30 }}>
                 <PitchText title="Till & Paybill reviews, Loan Appraisal" description="Get Mpesa transactions details and breakdown for reconciliation and loan appraisal." />
                 <PitchText title="Intelligent Analysis & Reporting" description="Get Mpesa statement breakdown into categories such as Elect. Tokens, Data & Airtime." />
                 <PitchText title="Save Time" description="Convert many mpesa statement at once using our tool hence saving on time." />
