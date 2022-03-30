@@ -23,7 +23,6 @@ const SellerDocs = () => {
         }
     }
 
-
     const downloadExcelFile = async (file: any, password: string, setDownload: any) => {
         try {
             setDownload(true)
@@ -33,7 +32,6 @@ const SellerDocs = () => {
             await saveAs(fileBlob, 'file.xlsx');
             setDownload(false)
         } catch (err) { throw new Error('password incorrect') }
-
     }
 
     const buttonDisabled = (password: string) => {
