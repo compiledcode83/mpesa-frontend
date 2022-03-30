@@ -16,7 +16,7 @@ export const sendFileToBackend = async (files: any) => {
           credentials: 'same-origin', // include, *same-origin, omit
         } as any
         
-        const response = await fetch("http://192.168.1.13:8001/file/uploadMultiFiles", query );
+        const response = await fetch(`${process.env.NEXT_PUBLIC_MANAGER_HOST}/file/uploadMultiFiles`, query );
         const fileDetails = await response.json();
    
         return fileDetails
