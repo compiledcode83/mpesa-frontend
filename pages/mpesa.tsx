@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { ListItem, ListItemLabel } from 'baseui/list';
 import { useStyletron } from 'baseui';
 import { Button } from 'baseui/button';
 import { FilePicker } from '../components/Uploader/fileUploader';
@@ -79,7 +78,7 @@ const SellerDocs = () => {
 
     const PitchText = ({ title, description, fontSize = 16 }: { title: string, description: string, fontSize?: number }) => (
         <>
-            <h3 style={{ marginBottom: 0, fontSize: fontSize }}>
+            <h3 style={{ color: '#1c2973', marginBottom: 0, fontSize: fontSize }}>
                 { title }
             </h3>
             <p style={{ marginTop: 10 }}>
@@ -110,8 +109,8 @@ const SellerDocs = () => {
     };
 
     return (
-        <div style={{ width: 1024, margin: 'auto', padding: 20 }}>
-            <h1>Free mpesa statement anayzer</h1>
+        <div style={{ maxWidth: 1024, margin: 'auto', padding: 20 }}>
+            <h1 style={{ color: '#1c2973' }}>Free mpesa statement anayzer</h1>
 
             {/* inspiration from https://www.mpesanalyser.com/ */}
             <div>
