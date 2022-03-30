@@ -6,6 +6,8 @@ import { Input } from "baseui/input";
 import { Card, StyledBody } from 'baseui/card';
 import { sendFileToBackend } from '../helpers/sendFileToBackend';
 import { saveAs } from 'file-saver';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoins, faFileContract, faClock, IconDefinition } from '@fortawesome/free-solid-svg-icons'
 
 const SellerDocs = () => {
     const [css] = useStyletron();
@@ -74,14 +76,25 @@ const SellerDocs = () => {
 
     }
 
-    const PitchText = ({ title, description, fontSize = 16, color = 'white', spacing = 0 }: { title: string, description: string, fontSize?: number, color?: string, spacing?: number }) => (
+    const PitchText = ({ title, description, icon, fontSize = 16, color = 'white', spacing = 0 }: { title: string, description: string, icon?: IconDefinition, fontSize?: number, color?: string, spacing?: number }) => (
         <>
-            <h3 style={{ color: color, marginBottom: 0, fontSize: fontSize }}>
-                { title }
-            </h3>
-            <p style={{ color: color === 'white' ? color : undefined, marginTop: spacing }}>
-                {description}
-            </p>
+            { icon ? 
+                <div style={{ width: 40, float: 'left', marginRight: 10, padding: 5, textAlign: 'center' }}>
+                    <FontAwesomeIcon icon={icon} color="white" size="2x" />
+                </div>
+             : null }
+
+            <div style={{ float: 'left' }}>
+                <h3 style={{ color: color, marginBottom: 0, fontSize: fontSize, marginTop: 0 }}>
+                    { title }
+                </h3>
+                
+                <p style={{ color: color === 'white' ? color : undefined, marginTop: spacing }}>
+                    {description}
+                </p>
+            </div>
+
+            <div style={{ clear: 'both' }}></div>
         </>
     );
 
@@ -113,10 +126,10 @@ const SellerDocs = () => {
             <h1 style={{ color: '#1c2973' }}>Free Mpesa statement analyzer</h1>
 
             {/* inspiration from https://www.mpesanalyser.com/ */}
-            <div style={{ backgroundColor: '#1c2973', paddingLeft: 20, paddingTop: 10, paddingBottom: 10, borderRadius: 10, marginBottom: 30 }}>
-                <PitchText title="Till & Paybill reviews, Loan Appraisal" description="Get Mpesa transactions details and breakdown for reconciliation and loan appraisal." />
-                <PitchText title="Intelligent Analysis & Reporting" description="Get Mpesa statement breakdown into categories such as Elect. Tokens, Data & Airtime." />
-                <PitchText title="Save Time" description="Convert many mpesa statement at once using our tool hence saving on time." />
+            <div style={{ backgroundColor: '#1c2973', paddingLeft: 20, paddingTop: 20, paddingBottom: 15, borderRadius: 10, marginBottom: 30 }}>
+                <PitchText icon={faCoins} title="Till & Paybill reviews, Loan Appraisal" description="Get Mpesa transactions details and breakdown for reconciliation and loan appraisal." />
+                <PitchText icon={faFileContract} title="Intelligent Analysis & Reporting" description="Get Mpesa statement breakdown into categories such as Elect. Tokens, Data & Airtime." />
+                <PitchText icon={faClock} title="Save Time" description="Convert many mpesa statement at once using our tool hence saving on time." />
             </div>
 
 
