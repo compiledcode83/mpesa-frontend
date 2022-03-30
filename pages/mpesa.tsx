@@ -77,6 +77,16 @@ const SellerDocs = () => {
 
     }
 
+    const PitchText = ({ title, description, fontSize = 16 }: { title: string, description: string, fontSize?: number }) => (
+        <>
+            <h3 style={{ marginBottom: 0, fontSize: fontSize }}>
+                { title }
+            </h3>
+            <p style={{ marginTop: 10 }}>
+                { description }
+            </p>
+        </>
+    );
 
     const UploadFile = () => {
         return (
@@ -88,9 +98,8 @@ const SellerDocs = () => {
                 })}
             >
                 <div style={{ marginBottom: 30 }}>
-                    <ListItem>
-                        <ListItemLabel description='Upload your mpesa statement to get instant feedback' >{'Get mpesa analytics back'}</ListItemLabel>
-                    </ListItem>
+                    <PitchText title="Get mpesa analytics back" description="Upload your mpesa statement to get instant feedback" fontSize={20} />
+                    
                     <FilePicker fileSelected={(files): any => fileSelected(files)} />
 
                 </div>
@@ -98,32 +107,17 @@ const SellerDocs = () => {
             </div>
 
         )
-    }
+    };
 
     return (
-        <div style={{ padding: 20 }}>
-            <h2>Free mpesa statement anayzer</h2>
+        <div style={{ width: 1024, margin: 'auto', padding: 20 }}>
+            <h1>Free mpesa statement anayzer</h1>
 
             {/* inspiration from https://www.mpesanalyser.com/ */}
             <div>
-                <h2>
-                    Till & Paybill reviews, Loan Appraisal
-                </h2>
-                <p>
-                    Get Mpesa transactions details and breakdown for reconciliation and loan appraisal.
-                </p>
-
-                <h2>
-                    Intelligent Analysis & Reporting
-                </h2>
-                <p>
-                    Get Mpesa statement breakdown into categories such as Elect. Tokens, Data & Airtime.
-                </p>
-
-                <h2>Save Time</h2>
-                <p>
-                    Convert many mpesa statement at once using our tool hence saving on time.
-                </p>
+                <PitchText title="Till & Paybill reviews, Loan Appraisal" description="Get Mpesa transactions details and breakdown for reconciliation and loan appraisal." />
+                <PitchText title="Intelligent Analysis & Reporting" description="Get Mpesa statement breakdown into categories such as Elect. Tokens, Data & Airtime." />
+                <PitchText title="Save Time" description="Convert many mpesa statement at once using our tool hence saving on time." />
             </div>
 
 
