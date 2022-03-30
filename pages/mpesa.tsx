@@ -23,6 +23,7 @@ const SellerDocs = () => {
         }
     }
 
+
     const downloadExcelFile = async (file: any, password: string, setDownload: any) => {
         try {
             setDownload(true)
