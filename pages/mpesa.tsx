@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { ListItem, ListItemLabel } from 'baseui/list';
 import { useStyletron } from 'baseui';
 import { Button } from 'baseui/button';
 import { FilePicker } from '../components/Uploader/fileUploader';
@@ -78,10 +77,10 @@ const SellerDocs = () => {
     const PitchText = ({ title, description, fontSize = 16 }: { title: string, description: string, fontSize?: number }) => (
         <>
             <h3 style={{ marginBottom: 0, fontSize: fontSize }}>
-                { title }
+                {title}
             </h3>
             <p style={{ marginTop: 10 }}>
-                { description }
+                {description}
             </p>
         </>
     );
@@ -97,7 +96,7 @@ const SellerDocs = () => {
             >
                 <div style={{ marginBottom: 30 }}>
                     <PitchText title="Get mpesa analytics back" description="Upload your mpesa statement to get instant feedback" fontSize={20} />
-                    
+
                     <FilePicker fileSelected={(files): any => fileSelected(files)} />
 
                 </div>
