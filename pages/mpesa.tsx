@@ -28,7 +28,12 @@ const SellerDocs = () => {
         try {
             setDownload(true)
             const url = `${process.env.NEXT_PUBLIC_MANAGER_HOST}/file/download/${file}.xlsx?password=${password}`
-            const start = await fetch(url, { method: 'GET' })
+            const start = await fetch(url, {
+                method: 'GET', headers: {
+                    'Access-Control-Allow-Origin': 'https://www.sevi.io',
+                    'Access-Control-Allow-Credentials': 'true'
+                }
+            })
             const fileBlob = await start.blob()
             await saveAs(fileBlob, 'file.xlsx');
             setDownload(false)
@@ -78,17 +83,17 @@ const SellerDocs = () => {
 
     const PitchText = ({ title, description, icon, fontSize = 16, color = 'white', spacing = 0 }: { title: string, description: string, icon?: IconDefinition, fontSize?: number, color?: string, spacing?: number }) => (
         <>
-            { icon ? 
+            {icon ?
                 <div style={{ width: 40, float: 'left', marginRight: 10, padding: 5, textAlign: 'center' }}>
                     <FontAwesomeIcon icon={icon} color="white" size="2x" />
                 </div>
-             : null }
+                : null}
 
             <div style={{ float: 'left' }}>
                 <h3 style={{ color: color, marginBottom: 0, fontSize: fontSize, marginTop: 0 }}>
-                    { title }
+                    {title}
                 </h3>
-                
+
                 <p style={{ color: color === 'white' ? color : undefined, marginTop: spacing }}>
                     {description}
                 </p>
@@ -122,7 +127,7 @@ const SellerDocs = () => {
 
     return (
         <div style={{ maxWidth: 1024, margin: 'auto', padding: 20 }}>
-            
+
             <h1 style={{ color: '#1c2973' }}>Free Mpesa statement analyzer</h1>
 
             {/* inspiration from https://www.mpesanalyser.com/ */}
