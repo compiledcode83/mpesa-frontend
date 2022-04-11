@@ -8,40 +8,73 @@ import { sendFileToBackend } from '../helpers/sendFileToBackend';
 import { saveAs } from 'file-saver';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoins, faFileContract, faClock, IconDefinition } from '@fortawesome/free-solid-svg-icons'
+import Link from 'next/link'
+
+import {
+    SnackbarProvider,
+    useSnackbar,
+} from 'baseui/snackbar';
+import { Delete } from 'baseui/icon';
 
 const SellerDocs = () => {
     const [css] = useStyletron();
     const [fileList, setFileList] = useState<any[]>([])
+    const { enqueue } = useSnackbar();
 
     const fileSelected = async (files: any) => {
         try {
-            // const file = await sendToS3(files)
             const file = await sendFileToBackend(files)
-            // console.log('file: afterup', file)
             setFileList([...fileList, ...file])
         } catch (err) {
             throw new Error(err)
         }
     }
 
-    const downloadExcelFile = async (file: any, password: string, setDownload: any) => {
+    const processDoc = async (file: any, password: string, setDownload: any, userDetails) => {
         try {
             setDownload(true)
-            const url = `${process.env.NEXT_PUBLIC_MANAGER_HOST}/file/download/${file}.xlsx?password=${password}`
+            const url = `${process.env.NEXT_PUBLIC_MANAGER_HOST}/file/processDoc/${file}?password=${password}`
+            // console.log('url:', url)
             const start = await fetch(url, {
-                method: 'GET', headers: {
+                method: 'GET',
+                // mode: "no-cors", // 'cors' by default
+                headers: {
                     'Access-Control-Allow-Origin': 'https://www.sevi.io',
                     'Access-Control-Allow-Credentials': 'true'
                 }
             })
-            const fileBlob = await start.blob()
-            await saveAs(fileBlob, 'file.xlsx');
+            console.log('start:', start)
+            if (start.statusText === 'Unauthorized') {
+                enqueue({
+                    message: 'Looks like the password is incorrect',
+                    startEnhancer: ({ size }) => <Delete size={size} />,
+                })
+            }
+
+            const val = await start.json()
+            userDetails(val)
             setDownload(false)
         } catch (err) { throw new Error('password incorrect') }
     }
 
+    const downloadExcel = async (userDetails) => {
+        const url = `${process.env.NEXT_PUBLIC_MANAGER_HOST}/file/toExcel/${userDetails.userId}`
+        console.log('url:', url)
+
+        const start = await fetch(url, {
+            method: 'GET',
+            // mode: "no-cors", // 'cors' by default
+            headers: {
+                'Access-Control-Allow-Origin': 'https://www.sevi.io',
+                'Access-Control-Allow-Credentials': 'true'
+            }
+        })
+        const fileBlob = await start.blob()
+        await saveAs(fileBlob, `${userDetails.name.replaceAll(" ", "-")}.xlsx`);
+    }
+
     const buttonDisabled = (password: string) => {
-        if (password.length > 8) return false
+        if (password.length > 7) return false
         return true
     }
 
@@ -49,6 +82,33 @@ const SellerDocs = () => {
         return fileList.map((file) => {
             const [password, setPassword] = useState('');
             const [download, setDownload] = useState(false)
+            const [userDetails, setUserDetails] = useState({})
+
+            if (userDetails.userId) {
+                return (
+                    <div key={file.filename} style={{ marginTop: 50 }}>
+                        <Card overrides={{ Root: { style: {} } }}>
+                            <StyledBody>
+                                <div>
+                                    <h3>{userDetails.name}</h3>
+                                    <h3>{userDetails.phoneNumber}</h3>
+                                    <div style={{ marginTop: 20 }}>
+                                        <Button >
+                                            <Link href={`/stats/${userDetails.userId}`}>
+                                                <a>Show general stats</a>
+                                            </Link>
+                                        </Button>
+                                    </div>
+                                    <div style={{ marginTop: 20 }}>
+                                        <Button onClick={() => downloadExcel(userDetails)} >download excel file</Button>
+                                    </div>
+                                </div>
+                            </StyledBody>
+                        </Card>
+                    </div >
+                )
+            }
+
             return (
                 <div key={file.filename} style={{ marginTop: 50 }}>
                     <Card overrides={{ Root: { style: {} } }}>
@@ -70,12 +130,11 @@ const SellerDocs = () => {
                                 />
                             </div>
                             <div style={{ marginTop: 20 }}>
-                                <Button onClick={() => downloadExcelFile(file.filename, password, setDownload)} isLoading={download} disabled={buttonDisabled(password)}>Get Excel File</Button>
+                                <Button onClick={() => processDoc(file.filename, password, setDownload, setUserDetails)} isLoading={download} disabled={buttonDisabled(password)}>Analyze file</Button>
                             </div>
-
                         </StyledBody>
                     </Card>
-                </div>
+                </div >
             )
         }) as any
 
@@ -106,11 +165,11 @@ const SellerDocs = () => {
     const UploadFile = () => {
         return (
             <div
-                className={css({
-                    // width: '375px',
-                    paddingLeft: 0,
-                    paddingRight: 0,
-                })}
+            // className={css({
+            //     // width: '375px',
+            //     paddingLeft: 0,
+            //     paddingRight: 0,
+            // })}
             >
                 <div style={{ marginBottom: 30 }}>
                     <PitchText title="Get mpesa analytics back" description="Upload your mpesa statement to get instant feedback" fontSize={20} color='#1c2973' spacing={10} />
@@ -126,6 +185,7 @@ const SellerDocs = () => {
     };
 
     return (
+
         <div style={{ maxWidth: 1024, margin: 'auto', padding: 20 }}>
 
             <h1 style={{ color: '#1c2973' }}>Free Mpesa statement analyzer</h1>
@@ -137,14 +197,22 @@ const SellerDocs = () => {
                 <PitchText icon={faClock} title="Save Time" description="Convert many mpesa statement at once using our tool hence saving on time." />
             </div>
 
+            <div> <UploadFile /></div>
 
-            <UploadFile />
 
-            <UploadFiles />
+            <div> <UploadFiles /></div>
+
         </div>
 
 
     );
 }
 
-export default SellerDocs
+export default function Base() {
+    return (
+        <SnackbarProvider>
+            <SellerDocs />
+        </SnackbarProvider>
+    )
+}
+//  export default 
