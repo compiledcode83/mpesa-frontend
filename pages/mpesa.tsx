@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useStyletron } from 'baseui';
+// import { useStyletron } from 'baseui';
 import { Button } from 'baseui/button';
 import { FilePicker } from '../components/Uploader/fileUploader';
 import { Input } from "baseui/input";
@@ -17,7 +17,7 @@ import {
 import { Delete } from 'baseui/icon';
 
 const SellerDocs = () => {
-    const [css] = useStyletron();
+    // const [css] = useStyletron();
     const [fileList, setFileList] = useState<any[]>([])
     const { enqueue } = useSnackbar();
 
@@ -82,7 +82,7 @@ const SellerDocs = () => {
         return fileList.map((file) => {
             const [password, setPassword] = useState('');
             const [download, setDownload] = useState(false)
-            const [userDetails, setUserDetails] = useState({})
+            const [userDetails, setUserDetails] = useState({ userId: null, name: null, phoneNumber: null })
 
             if (userDetails.userId) {
                 return (

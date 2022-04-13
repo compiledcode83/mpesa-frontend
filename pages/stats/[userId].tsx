@@ -3,19 +3,21 @@ import { useStyletron } from 'baseui';
 import { Grid, Cell } from 'baseui/layout-grid';
 import { ListItem, ListItemLabel } from "baseui/list";
 import { Check } from "baseui/icon";
-import { Axis, BarSeries, Chart, Position, ScaleType, Settings } from '@elastic/charts';
-import '@elastic/charts/dist/theme_light.css';
+// import { Axis, BarSeries, Chart, Position, ScaleType, Settings } from '@elastic/charts';
+// import '@elastic/charts/dist/theme_light.css';
 // import 'core-js/stable';
 // import 'regenerator-runtime/runtime';
 import { useRouter } from 'next/router'
+import { Input } from 'baseui/input';
 
 
 
 export default function Analytics() {
     const router = useRouter()
     const { userId } = router.query
-    const [{ user, transactionDetails }, setData] = useState({})
-    console.log('user:', user)
+    const [{ transactionDetails }, setData] = useState<any>({})
+
+    // console.log('user:', user)
 
     useEffect(() => {
         const stat = async () => {
@@ -42,25 +44,57 @@ export default function Analytics() {
 
     const Graph = () => {
         if (transactionDetails?.aggregations.week) {
-            const specId = 'first bar'
-            const formatData = transactionDetails.aggregations.week.buckets.map(item => { return ({ x: item.incomming.value, y: item.key_as_string, v: item.outgoing.value }) })
-            return (
-                <Chart size={{ height: 400, width: 800 }}>
-                    {/* <Settings baseTheme={useBaseTheme()} /> */}
-                    <BarSeries
-                        id={specId}
-                        name="Simple bar series"
-                        xScaleType={ScaleType.Linear}
-                        yScaleType={ScaleType.Linear}
-                        xAccessor="y"
-                        yAccessors={[`x`, 'v']}
-                        data={formatData}
-                    />
-                </Chart>
-            )
+            // const specId = 'first bar'
+            // const formatData = transactionDetails.aggregations.week.buckets.map(item => { return ({ x: item.incomming.value, y: item.key_as_string, v: item.outgoing.value }) })
+            // return null
+            return null
+            // <Chart size={{ height: 400, width: 800 }}>
+            //     {/* <Settings baseTheme={useBaseTheme()} /> */}
+            //     <BarSeries
+            //         id={specId}
+            //         name="Simple bar series"
+            //         xScaleType={ScaleType.Linear}
+            //         yScaleType={ScaleType.Linear}
+            //         xAccessor="y"
+            //         yAccessors={[`x`, 'v']}
+            //         data={formatData}
+            //     />
+            // </Chart>
+
         }
 
         return null
+    }
+
+    const TransactionList = () => {
+        return (
+            <ListItem
+                artwork={props => <Check {...props} />}
+                endEnhancer={() => (
+                    <ListItemLabel>100 kes</ListItemLabel>
+                )}
+            >
+                {/* <ListItemLabel>Label</ListItemLabel> */}
+                <ListItemLabel description="description">
+                    some Titel
+                </ListItemLabel>
+            </ListItem>
+        )
+    }
+
+    const TransactionSearch = () => {
+        const [value, setValue] = React.useState("");
+        return (
+            <Input
+                value={value}
+                onChange={(e) => {
+                    const val: any = e.target as Element
+                    setValue(val.value)
+                }}
+                placeholder="Search in description or amount"
+            // clearOnEscape
+            />
+        )
     }
 
     return (
@@ -92,7 +126,7 @@ export default function Analytics() {
             </div>
             <div>
                 <h2>Top 10 most found transactions interactions</h2>
-                {transactionDetails?.aggregations.name?.buckets.map((item) => {
+                {transactionDetails?.aggregations?.name?.buckets.map((item) => {
                     return (<Cell key={item.key} span={[1, 5, 12]}>
                         <Inner>
                             <ListItem
@@ -107,6 +141,12 @@ export default function Analytics() {
                     </Cell>)
                 })}
 
+            </div>
+
+            <div>
+                <p>Transaction overview</p>
+                <TransactionSearch />
+                <TransactionList />
             </div>
         </div>
     )
