@@ -6,6 +6,7 @@ import Features from "../components/Features";
 import Footer from "../components/Footer";
 import Video from "../components/video";
 
+
 export default function Home() {
   return (
     <>
@@ -19,7 +20,7 @@ export default function Home() {
           as="font"
           crossOrigin=""
         />
-        <script dangerouslySetInnerHTML={{
+        {/* <script dangerouslySetInnerHTML={{
           __html: `(function(d,t) {
         var BASE_URL="https://app.chatwoot.com";
         var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
@@ -31,7 +32,7 @@ export default function Home() {
             baseUrl: BASE_URL
           })
         }
-      })(document,"script");`}} />
+      })(document,"script");`}} /> */}
       </Head>
       <Header />
       <Banner />

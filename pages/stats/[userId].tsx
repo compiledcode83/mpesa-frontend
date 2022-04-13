@@ -25,7 +25,7 @@ export default function Analytics() {
                 method: "GET",
             })
             const data = await request.json()
-            console.log('data:', data)
+            // console.log('data:', data)
 
             setData(data)
         }

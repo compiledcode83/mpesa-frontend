@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap");
+
+/*# sourceMappingURL=globals.css.map */
+
 .header {
   max-width: 100vw;
   overflow: hidden;
@@ -9,11 +12,11 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   padding: 0 10%;
   z-index: 100;
   position: absolute;
@@ -33,16 +36,16 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   width: 100%;
 }
 
 @media screen and (max-width: 520px) {
   .header .headerLeft {
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
   }
 }
 
@@ -52,8 +55,8 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   font-size: 18px;
   line-height: 24px;
   text-align: center;
@@ -64,8 +67,8 @@
 @media screen and (min-width: 1500px) {
   .header .headerLeft .headerTabs {
     -webkit-box-pack: space-evenly;
-        -ms-flex-pack: space-evenly;
-            justify-content: space-evenly;
+    -ms-flex-pack: space-evenly;
+    justify-content: space-evenly;
     width: 80%;
     margin-left: 100px;
   }
@@ -110,11 +113,11 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
   width: 100%;
 }
 
@@ -130,7 +133,7 @@
   background: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.39);
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   border-radius: 5px;
   font-weight: 500;
   font-size: 16px;
@@ -141,11 +144,11 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 .header .headerRight .headerAdmin:hover {
@@ -162,7 +165,7 @@
   margin: 10px;
   background: #6754e2;
   -webkit-box-shadow: 0px 6px 20px rgba(70, 55, 172, 0.4);
-          box-shadow: 0px 6px 20px rgba(70, 55, 172, 0.4);
+  box-shadow: 0px 6px 20px rgba(70, 55, 172, 0.4);
   border-radius: 5px;
   font-weight: 500;
   font-size: 16px;
@@ -191,7 +194,7 @@
   padding: 30px;
   padding-top: 120px;
   -webkit-transform: translateX(-200%);
-          transform: translateX(-200%);
+  transform: translateX(-200%);
   -webkit-transition: -webkit-transform 300ms ease-in-out;
   transition: -webkit-transform 300ms ease-in-out;
   transition: transform 300ms ease-in-out;
@@ -236,16 +239,16 @@
   text-decoration: none;
 }
 
-.openSidebarMenu[type="checkbox"]:checked ~ .sidebarMenu {
+.openSidebarMenu[type="checkbox"]:checked~.sidebarMenu {
   -webkit-transform: translateX(0);
-          transform: translateX(0);
+  transform: translateX(0);
 }
 
 .openSidebarMenu[type="checkbox"] {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   display: none;
 }
 
@@ -253,7 +256,7 @@
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   cursor: pointer;
   position: absolute;
   z-index: 100;
@@ -271,11 +274,11 @@
   display: flex;
   z-index: 101;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   background-color: #ffffff;
 }
 
@@ -290,4 +293,5 @@
     display: block;
   }
 }
+
 /*# sourceMappingURL=Header.module.css.map */
