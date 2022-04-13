@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { useStyletron } from 'baseui';
+import { useStyletron } from 'baseui';
 import { Button } from 'baseui/button';
 import { FilePicker } from '../components/Uploader/fileUploader';
 import { Input } from "baseui/input";
@@ -17,7 +17,7 @@ import {
 import { Delete } from 'baseui/icon';
 
 const SellerDocs = () => {
-    // const [css] = useStyletron();
+    const [css] = useStyletron();
     const [fileList, setFileList] = useState<any[]>([])
     const { enqueue } = useSnackbar();
 
@@ -164,12 +164,12 @@ const SellerDocs = () => {
 
     const UploadFile = () => {
         return (
-            <div
-            // className={css({
-            //     // width: '375px',
-            //     paddingLeft: 0,
-            //     paddingRight: 0,
-            // })}
+            <StyledBody
+                className={css({
+                    // width: '375px',
+                    paddingLeft: 0,
+                    paddingRight: 0,
+                })}
             >
                 <div style={{ marginBottom: 30 }}>
                     <PitchText title="Get mpesa analytics back" description="Upload your mpesa statement to get instant feedback" fontSize={20} color='#1c2973' spacing={10} />
@@ -179,7 +179,7 @@ const SellerDocs = () => {
                     </div>
                 </div>
 
-            </div>
+            </StyledBody>
 
         )
     };
