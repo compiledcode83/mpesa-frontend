@@ -88,22 +88,22 @@ const SellerDocs = () => {
                 return (
                     <div key={file.filename} style={{ marginTop: 50 }}>
                         <Card overrides={{ Root: { style: {} } }}>
-                            <StyledBody>
-                                <div>
-                                    <h3>{userDetails.name}</h3>
-                                    <h3>{userDetails.phoneNumber}</h3>
-                                    <div style={{ marginTop: 20 }}>
-                                        <Button >
-                                            <Link href={`/stats/${userDetails.userId}`}>
-                                                <a>Show general stats</a>
-                                            </Link>
-                                        </Button>
-                                    </div>
-                                    <div style={{ marginTop: 20 }}>
-                                        <Button onClick={() => downloadExcel(userDetails)} >download excel file</Button>
-                                    </div>
+                            {/* <StyledBody> */}
+                            <div>
+                                <h3>{userDetails.name}</h3>
+                                <h3>{userDetails.phoneNumber}</h3>
+                                <div style={{ marginTop: 20 }}>
+                                    <Button>
+                                        <Link href={`/stats/${userDetails.userId}`}>
+                                            <a style={{ color: 'white' }}>Show general stats</a>
+                                        </Link>
+                                    </Button>
                                 </div>
-                            </StyledBody>
+                                <div style={{ marginTop: 20 }}>
+                                    <Button onClick={() => downloadExcel(userDetails)} >download excel file</Button>
+                                </div>
+                            </div>
+                            {/* </StyledBody> */}
                         </Card>
                     </div >
                 )
@@ -172,7 +172,7 @@ const SellerDocs = () => {
                 })}
             >
                 <div style={{ marginBottom: 30 }}>
-                    <PitchText title="Get mpesa analytics back" description="Upload your mpesa statement to get instant feedback" fontSize={20} color='#1c2973' spacing={10} />
+                    <PitchText title="Get valuable insight into mpesa transactions" description="Upload your mpesa statement to get instant feedback" fontSize={20} color='#1c2973' spacing={10} />
 
                     <div style={{ paddingTop: 10 }}>
                         <FilePicker fileSelected={(files): any => fileSelected(files)} />

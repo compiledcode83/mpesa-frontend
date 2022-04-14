@@ -10,8 +10,8 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 @media screen and (min-width: 1400px) {
@@ -29,7 +29,7 @@
 @media screen and (max-width: 520px) {
   .banner {
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
   }
 }
 
@@ -38,11 +38,13 @@
   top: 0px;
   left: 0;
   width: 100%;
+  height: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   z-index: 1;
   pointer-events: none;
 }
+
 
 @media screen and (max-width: 1024px) {
   .banner .bannerBg {
@@ -54,7 +56,7 @@
   width: 100%;
   z-index: 2;
   color: #ffffff;
-  padding-top: 100px;
+  /* padding-top: 100px; */
 }
 
 @media screen and (min-width: 521px) and (max-width: 1024px) {
@@ -71,14 +73,14 @@
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
   }
 }
 
@@ -157,7 +159,7 @@
   color: #1c2973;
   background: #ffffff;
   -webkit-box-shadow: 0px 8px 36px rgba(0, 0, 0, 0.15);
-          box-shadow: 0px 8px 36px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 8px 36px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
 }
 
@@ -171,11 +173,11 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   margin-top: 20%;
   z-index: 2;
 }
@@ -225,4 +227,5 @@
     margin-top: 180px;
   }
 }
+
 /*# sourceMappingURL=Banner.module.css.map */

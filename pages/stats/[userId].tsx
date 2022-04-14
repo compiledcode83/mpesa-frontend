@@ -3,36 +3,37 @@ import { useStyletron } from 'baseui';
 import { Grid, Cell } from 'baseui/layout-grid';
 import { ListItem, ListItemLabel } from "baseui/list";
 import { Check } from "baseui/icon";
-// import { Axis, BarSeries, Chart, Position, ScaleType, Settings } from '@elastic/charts';
-// import '@elastic/charts/dist/theme_light.css';
+import { Axis, BarSeries, Chart, Position, ScaleType, Settings, Goal, BandFillColorAccessorInput } from '@elastic/charts';
+import '@elastic/charts/dist/theme_light.css';
 // import 'core-js/stable';
-// import 'regenerator-runtime/runtime';
+import 'regenerator-runtime/runtime';
 import { useRouter } from 'next/router'
 import { Input } from 'baseui/input';
-
-
+import { GoalSubtype } from '@elastic/charts/dist/chart_types/goal_chart/specs/constants';
 
 export default function Analytics() {
-    const router = useRouter()
-    const { userId } = router.query
+    const { query: { userId } } = useRouter()
     const [{ transactionDetails }, setData] = useState<any>({})
-
-    // console.log('user:', user)
+    const [isLoading, setLoading] = useState(false)
 
     useEffect(() => {
-        const stat = async () => {
-            const request = await fetch(`${process.env.NEXT_PUBLIC_MANAGER_HOST}/file/stats/${userId}`, {
-                method: "GET",
-            })
-            const data = await request.json()
-            // console.log('data:', data)
-
-            setData(data)
+        setLoading(true)
+        if (userId) {
+            fetch(`${process.env.NEXT_PUBLIC_MANAGER_HOST}/file/stats/${userId}`)
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log('data:', data)
+                    setData(data)
+                    setLoading(false)
+                })
         }
-        stat()
     }, [])
 
-
+    if (isLoading) return (
+        <div>
+            <p>loading</p>
+        </div>
+    )
 
     const stats = [
         { label: 'Total credit transactions', amount: 1000 },
@@ -43,24 +44,23 @@ export default function Analytics() {
     ]
 
     const Graph = () => {
-        if (transactionDetails?.aggregations.week) {
-            // const specId = 'first bar'
-            // const formatData = transactionDetails.aggregations.week.buckets.map(item => { return ({ x: item.incomming.value, y: item.key_as_string, v: item.outgoing.value }) })
-            // return null
-            return null
-            // <Chart size={{ height: 400, width: 800 }}>
-            //     {/* <Settings baseTheme={useBaseTheme()} /> */}
-            //     <BarSeries
-            //         id={specId}
-            //         name="Simple bar series"
-            //         xScaleType={ScaleType.Linear}
-            //         yScaleType={ScaleType.Linear}
-            //         xAccessor="y"
-            //         yAccessors={[`x`, 'v']}
-            //         data={formatData}
-            //     />
-            // </Chart>
-
+        if (transactionDetails?.aggregations?.week) {
+            const specId = 'first bar'
+            const formatData = transactionDetails.aggregations.week.buckets.map(item => { return ({ x: item.incomming.value, y: item.key_as_string, v: item.outgoing.value }) })
+            return (
+                < Chart size={{ height: 400, width: 800 }}>
+                    {/* <Settings baseTheme={useBaseTheme()} /> */}
+                    < BarSeries
+                        id={specId}
+                        name="in and out transactions per week"
+                        xScaleType={ScaleType.Linear}
+                        yScaleType={ScaleType.Linear}
+                        xAccessor="y"
+                        yAccessors={[`x`, 'v']}
+                        data={formatData}
+                    />
+                </Chart >
+            )
         }
 
         return null
@@ -97,13 +97,54 @@ export default function Analytics() {
         )
     }
 
+    const Range = () => {
+        const val = Math.round(transactionDetails?.aggregations?.average_transactions_amount_per_day_last_3_months.value) || 0
+        console.log('val:', val)
+        return (
+            <Chart size={{ height: 400, width: 800 }}>
+                {/* <Settings baseTheme={useBaseTheme()} /> */}
+                <Goal
+                    id="spec_1"
+                    subtype={GoalSubtype.Goal}
+                    base={200}
+                    target={3000}
+                    actual={val}
+                    bands={[100, 500, 1000, 2000, 3000, 4000, 5000]}
+                    ticks={[100, 500, 1000, 2000, 3000, 4000, 5000]}
+                    tickValueFormatter={({ value }: BandFillColorAccessorInput) => String(value)}
+                    bandFillColor={({ value }: BandFillColorAccessorInput) => {
+                        return "green"
+                    }}
+                    labelMajor="Daily average Transaction volume"
+                    labelMinor="KES"
+                    centralMajor={val.toString()}
+                    centralMinor=""
+                />
+            </Chart>
+        )
+    }
+
     return (
         <div>
             <div>
+                <div>
+                    {/* <p>Daily average transaction volume</p>
+                    {transactionDetails?.aggregations?.average_transactions_amount_per_day_last_3_months.value} */}
+                    <Range />
+                    <p>Range is a benchmark between worst known and best known statements</p>
+
+                </div>
+
             </div>
 
-            <Graph />
+            {/* <div>
 
+                <p>Total number of different transaction sources</p>
+            </div> */}
+
+
+            <Graph />
+            <h3>Weekly incomming and outgoing transactions</h3>
             <div>
                 <Outer>
                     <Grid>
@@ -184,3 +225,10 @@ const Inner: React.FunctionComponent<{}> = ({ children }) => {
         </div>
     );
 };
+
+
+export async function getServerSideProps(context) {
+    return {
+        props: {}, // will be passed to the page component as props
+    }
+}
