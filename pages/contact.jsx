@@ -115,9 +115,9 @@ const Contact = () => {
               <Image src="/images/callIcon.svg" width={35} height={35} />
             </div>
             <span className={styles.serviceRight}>
-              Support +254 743 623 754
+              Support 0111560376
               <br />
-              Office +254 20 298 8000
+              Office 0795600090
             </span>
           </div>
           <div className={styles.bannerService}>
