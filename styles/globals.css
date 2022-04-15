@@ -1,39 +1,41 @@
-@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap");
+
 @font-face {
   font-family: "RecoletaAlt";
   src: url("/fonts/RecoletaAlt/RecoletaAlt-Bold.ttf");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-}
+} */
 
-html,
+/* html,
 body {
   padding: 0;
   margin: 0;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   font-family: -apple-system, Rubik, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   width: 100%;
-}
+} */
 
-h1,
+/* h1,
 h2,
 h3,
 h4,
 h5 {
   font-family: -apple-system, RecoletaAlt, Rubik, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
-}
+} */
 
-a {
+/* a {
   color: inherit;
   text-decoration: none !important;
-}
+} */
 
-ul,
+/* ul,
 li {
   list-style: none !important;
   text-decoration: none !important;
-}
+} */
+
 /*# sourceMappingURL=globals.css.map */

@@ -19,26 +19,32 @@ const Header = () => {
           height={80}
         />
         <ul className={styles.headerTabs}>
-          <li className={`${router.pathname == "/" && styles.active}`}>
+          {/* <li className={`${router.pathname == "/" && styles.active}`}>
             <Link href="/">Home</Link>
+          </li> */}
+          <li onClick={() => { router.push("/") }} className={`${router.pathname == "/#features" && styles.active}`}>
+            Home
           </li>
-          <li onClick={() => {router.push("/#features")}} className={`${router.pathname == "/#features" && styles.active}`}>
+          <li onClick={() => { router.push("/#features") }} className={`${router.pathname == "/#features" && styles.active}`}>
             Features
           </li>
           {/* <li className={`${router.pathname == "/about" && styles.active}`}>
             About
           </li> */}
-          <li onClick={() => {router.push("https://docs.sevi.io/docs/intro")}} className={`${router.pathname == "https://docs.sevi.io/docs/intro" && styles.active}`}>
+          <li onClick={() => { router.push("https://docs.sevi.io/docs/intro") }} className={`${router.pathname == "https://docs.sevi.io/docs/intro" && styles.active}`}>
             Docs
           </li>
-          <li className={`${router.pathname == "/contact" && styles.active}`}>
-            <Link href="/contact">Contact</Link>
+          <li onClick={() => { router.push("/contact") }} className={`${router.pathname == "/#features" && styles.active}`}>
+            Contact
           </li>
+          {/* <li className={`${router.pathname == "/contact" && styles.active}`}>
+            <Link href="/contact">Contact</Link>
+          </li> */}
         </ul>
       </div>
       <div className={styles.headerRight}>
         <div>
-          <Button className={styles.headerAdmin} onClick={() => {router.push('https://forms.gle/KvNxBHaUQKEQe5zNA') }}>
+          <Button className={styles.headerAdmin} onClick={() => { router.push('https://forms.gle/KvNxBHaUQKEQe5zNA') }}>
             <img src="/images/adminIcon.svg" alt="" width={15} height={15} />
             <a className={styles.admin}>  APPLY NOW</a>
           </Button>
@@ -47,7 +53,7 @@ const Header = () => {
           <Button
             className={styles.headerDownload}
             startEnhancer={() => <ArrowDown size={24} />}
-            onClick={() => {router.push('https://sevi.io/app') }}
+            onClick={() => { router.push('https://sevi.io/app') }}
           >
             DOWNLOAD
           </Button>
@@ -102,7 +108,7 @@ const Header = () => {
         </ul>
       </div>
       {/* Sidebar */}
-    </div>
+    </div >
   );
 };
 

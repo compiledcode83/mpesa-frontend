@@ -14,7 +14,9 @@ const Video = () => {
                 </span>
       </h1>
       <div className={styles.banner2Image}>
-      <ReactPlayer url='https://youtu.be/dWeqTfxqN1I' />
+        <div style={{ maxWidth: 640, maxHeight: 480, paddingLeft: 20, paddingRight: 20 }}>
+          <ReactPlayer url='https://youtu.be/dWeqTfxqN1I' width="auto" />
+        </div>
       </div>
     </div>
   );
