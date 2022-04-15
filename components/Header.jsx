@@ -44,7 +44,7 @@ const Header = () => {
       </div>
       <div className={styles.headerRight}>
         <div>
-          <Button className={styles.headerAdmin} onClick={() => { router.push('https://forms.gle/KvNxBHaUQKEQe5zNA') }}>
+          <Button className={styles.headerAdmin} onClick={() => { router.push('https://sevi.io/app') }}>
             <img src="/images/adminIcon.svg" alt="" width={15} height={15} />
             <a className={styles.admin}>  APPLY NOW</a>
           </Button>
