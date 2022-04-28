@@ -10,24 +10,13 @@ import 'regenerator-runtime/runtime';
 import { useRouter } from 'next/router'
 import { Input } from 'baseui/input';
 import { GoalSubtype } from '@elastic/charts/dist/chart_types/goal_chart/specs/constants';
+import {useBasicTransactionsStat, useSearchTransactions, useTransactionRange} from '../api/transactions';
 
 export default function Analytics() {
     const { query: { userId } } = useRouter()
-    const [{ transactionDetails }, setData] = useState<any>({})
-    const [isLoading, setLoading] = useState(false)
-
-    useEffect(() => {
-        setLoading(true)
-        if (userId) {
-            fetch(`${process.env.NEXT_PUBLIC_MANAGER_HOST}/file/stats/${userId}`)
-                .then((res) => res.json())
-                .then((data) => {
-                    console.log('data:', data)
-                    setData(data)
-                    setLoading(false)
-                })
-        }
-    }, [])
+    const [{ user, transactions }, isLoading] = useBasicTransactionsStat(userId);
+    const [searchTransactions, loadTransactions] = useSearchTransactions(userId);
+    // const [rangeAvg, loadRangeAvg] = useTransactionRange(userId);
 
     if (isLoading) return (
         <div>
@@ -36,23 +25,29 @@ export default function Analytics() {
     )
 
     const stats = [
-        { label: 'Total credit transactions', amount: 1000 },
-        { label: 'Total cash inflow (ex loans)', amount: 100 },
-        { label: 'Total cash inflow (ex loans, ex suppliers)', amount: 100 },
-        { label: 'Total to own bank + savings + Mpesa balance increase', amount: 100 },
-        { label: 'Average positive Mpesa balance', amount: 3000 },
+        { label: 'Total cash inflow (ex loans)', amount: transactions?.totalCashData.hits.total.value },
+        { label: 'Average positive Mpesa balance', amount: Math.round(transactions?.avg3monthData.aggregations.avgPositiveBalance.avgPositive.value) },
+        { label: 'Total In', amount: transactions?.avg3monthData.aggregations.totalIn.value },
+        { label: 'Total Out', amount: transactions?.avg3monthData.aggregations.totalOut.total.value },
+        { label: 'Personal transactions count', amount: transactions?.personalTransactionData.hits.total.value },
+        // { label: 'Total credit transactions', amount: 1000 },
+        // { label: 'Total cash inflow (ex loans, ex suppliers)', amount: 100 },
+        // { label: 'Total to own bank + savings + Mpesa balance increase', amount: 100 },
     ]
 
     const Graph = () => {
-        if (transactionDetails?.aggregations?.week) {
+        if (user?.transactionDetails?.aggregations?.week) {
             const specId = 'first bar'
-            const formatData = transactionDetails.aggregations.week.buckets.map(item => { return ({ x: item.incomming.value, y: item.key_as_string, v: item.outgoing.value }) })
+            // const formatData = user?.transactionDetails.aggregations.week.buckets.map(item => { return ({ x: item.incomming.value, y: item.key_as_string, v: item.outgoing.value }) })
+            const sumDailyIn = transactions?.avg3monthData.aggregations.avgDaily.sumDailyIn || [];
+            const sumDailyOut = transactions?.avg3monthData.aggregations.avgDaily.sumDailyOut || [];
+            const formatData = sumDailyIn.buckets.map((item, index) => { return ({ x: item.daySum.value, y: item.key_as_string, v: sumDailyOut.buckets[index].daySum.value }) })
             return (
                 < Chart size={{ height: 400, width: 800 }}>
                     {/* <Settings baseTheme={useBaseTheme()} /> */}
                     < BarSeries
                         id={specId}
-                        name="in and out transactions per week"
+                        name="in and out transactions sum per day"
                         xScaleType={ScaleType.Linear}
                         yScaleType={ScaleType.Linear}
                         xAccessor="y"
@@ -68,28 +63,52 @@ export default function Analytics() {
 
     const TransactionList = () => {
         return (
-            <ListItem
-                artwork={props => <Check {...props} />}
-                endEnhancer={() => (
-                    <ListItemLabel>100 kes</ListItemLabel>
-                )}
-            >
-                {/* <ListItemLabel>Label</ListItemLabel> */}
-                <ListItemLabel description="description">
-                    some Titel
-                </ListItemLabel>
-            </ListItem>
+            <Grid>
+            {searchTransactions.map((item, index) => {
+                    return (<Cell key={index} span={[1, 5, 12]}>
+                        <Inner>
+                            <ListItem
+                                // artwork={props => <Check {...props} />}
+                            >
+                                <ListItemLabel>{item.description}</ListItemLabel>
+                                <ListItemLabel>{item.amount}</ListItemLabel>
+                            </ListItem>
+                        </Inner>
+                    </Cell>)
+                })}
+                </Grid>
+            // <ListItem
+            //     artwork={props => <Check {...props} />}
+            //     endEnhancer={() => (
+            //         <ListItemLabel>100 kes</ListItemLabel>
+            //     )}
+            // >
+            //     {/* <ListItemLabel>Label</ListItemLabel> */}
+            //     <ListItemLabel description="description">
+            //         some Titel
+            //     </ListItemLabel>
+            // </ListItem>
         )
     }
 
     const TransactionSearch = () => {
-        const [value, setValue] = React.useState("");
+        const [searchText, setSearchText] = useState("");
+
+        const loadResult = (val) => {
+            setSearchText(val);
+            if (val.length > 3) {
+                loadTransactions(val);
+            }
+        }
+
         return (
             <Input
-                value={value}
+                type="text"
+                value={searchText}
                 onChange={(e) => {
+                    e.preventDefault();
                     const val: any = e.target as Element
-                    setValue(val.value)
+                    loadResult(val.value)
                 }}
                 placeholder="Search in description or amount"
             // clearOnEscape
@@ -98,29 +117,51 @@ export default function Analytics() {
     }
 
     const Range = () => {
-        const val = Math.round(transactionDetails?.aggregations?.average_transactions_amount_per_day_last_3_months.value) || 0
-        console.log('val:', val)
+        const avgDailyIn = Math.round(transactions?.avg3monthData?.aggregations?.avgDaily.avgDailyIn.value) || 0
+        const avgDailyOut = Math.round(transactions?.avg3monthData?.aggregations?.avgDaily.avgDailyOut.value) || 0
+
         return (
-            <Chart size={{ height: 400, width: 800 }}>
+            <Grid>
+            <Chart size={{ height: 400, width: 400 }}>
                 {/* <Settings baseTheme={useBaseTheme()} /> */}
                 <Goal
                     id="spec_1"
                     subtype={GoalSubtype.Goal}
                     base={200}
                     target={3000}
-                    actual={val}
+                    actual={avgDailyIn}
                     bands={[100, 500, 1000, 2000, 3000, 4000, 5000]}
                     ticks={[100, 500, 1000, 2000, 3000, 4000, 5000]}
                     tickValueFormatter={({ value }: BandFillColorAccessorInput) => String(value)}
                     bandFillColor={({ value }: BandFillColorAccessorInput) => {
                         return "green"
                     }}
-                    labelMajor="Daily average Transaction volume"
+                    labelMajor="Daily average Transaction in"
                     labelMinor="KES"
-                    centralMajor={val.toString()}
+                    centralMajor={avgDailyIn.toString()}
                     centralMinor=""
                 />
             </Chart>
+            <Chart size={{ height: 400, width: 400 }}>
+                <Goal
+                    id="spec_1"
+                    subtype={GoalSubtype.Goal}
+                    base={200}
+                    target={3000}
+                    actual={avgDailyOut}
+                    bands={[100, 500, 1000, 2000, 3000, 4000, 5000]}
+                    ticks={[100, 500, 1000, 2000, 3000, 4000, 5000]}
+                    tickValueFormatter={({ value }: BandFillColorAccessorInput) => String(value)}
+                    // bandFillColor={({ value }: BandFillColorAccessorInput) => {
+                    //     return "green"
+                    // }}
+                    labelMajor="Daily average Transaction out"
+                    labelMinor="KES"
+                    centralMajor={avgDailyOut.toString()}
+                    centralMinor=""
+                />
+            </Chart>
+            </Grid>
         )
     }
 
@@ -144,7 +185,7 @@ export default function Analytics() {
 
 
             <Graph />
-            <h3>Weekly incomming and outgoing transactions</h3>
+            <h3>Day incomming and outgoing transactions summary</h3>
             <div>
                 <Outer>
                     <Grid>
@@ -167,7 +208,7 @@ export default function Analytics() {
             </div>
             <div>
                 <h2>Top 10 most found transactions interactions</h2>
-                {transactionDetails?.aggregations?.name?.buckets.map((item) => {
+                {user?.transactionDetails?.aggregations?.name?.buckets.map((item) => {
                     return (<Cell key={item.key} span={[1, 5, 12]}>
                         <Inner>
                             <ListItem
