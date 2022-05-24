@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useStyletron } from 'baseui';
 import { Button } from 'baseui/button';
 import { FilePicker } from '../components/Uploader/fileUploader';
@@ -9,6 +9,8 @@ import { saveAs } from 'file-saver';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoins, faFileContract, faClock, IconDefinition } from '@fortawesome/free-solid-svg-icons'
 import Link from 'next/link'
+import axios from 'axios'
+import { ProgressBar, SIZE } from "baseui/progress-bar";
 
 import {
     SnackbarProvider,
@@ -16,14 +18,17 @@ import {
 } from 'baseui/snackbar';
 import { Delete } from 'baseui/icon';
 
+
 const SellerDocs = () => {
     const [css] = useStyletron();
     const [fileList, setFileList] = useState<any[]>([])
+    const [email, setEmail] = useState<string>('')
     const { enqueue } = useSnackbar();
 
     const fileSelected = async (files: any) => {
         try {
             const file = await sendFileToBackend(files)
+            console.log('file:', file)
             setFileList([...fileList, ...file])
         } catch (err) {
             throw new Error(err)
@@ -33,28 +38,34 @@ const SellerDocs = () => {
     const processDoc = async (file: any, password: string, setDownload: any, userDetails) => {
         try {
             setDownload(true)
-            const url = `${process.env.NEXT_PUBLIC_MANAGER_HOST}/file/processDoc/${file}?password=${password}`
-            // console.log('url:', url)
-            const start = await fetch(url, {
-                method: 'GET',
-                // mode: "no-cors", // 'cors' by default
-                headers: {
-                    'Access-Control-Allow-Origin': 'https://www.sevi.io',
-                    'Access-Control-Allow-Credentials': 'true'
-                }
-            })
-            console.log('start:', start)
-            if (start.statusText === 'Unauthorized') {
-                enqueue({
-                    message: 'Looks like the password is incorrect',
-                    startEnhancer: ({ size }) => <Delete size={size} />,
-                })
-            }
+            const url = `${process.env.NEXT_PUBLIC_MANAGER_HOST}/file/process/${file}?password=${password}`
+            console.log('url:', url)
+            const request = await axios.post(url);
 
-            const val = await start.json()
-            userDetails(val)
+            // const start = await fetch(url, {
+            //     method: 'POST',
+            //     mode: process.env.NODE_ENV === 'development' ? "no-cors" : 'cors', // 'cors' by default
+            //     headers: {
+            //         'Access-Control-Allow-Origin': 'https://www.sevi.io',
+            //         'Access-Control-Allow-Credentials': 'true'
+            //     }
+            // })
+            // console.log('start:', start)
+            // if (start.statusText === 'Unauthorized') {
+            //     enqueue({
+            //         message: 'Looks like the password is incorrect',
+            //         startEnhancer: ({ size }) => <Delete size={size} />,
+            //     })
+            // }
+
+            // const val = await start.json()
+            // console.log('val:', val)
+            userDetails(request.data)
             setDownload(false)
-        } catch (err) { throw new Error('password incorrect') }
+        } catch (err) {
+            console.log('err:', err)
+            throw new Error('password incorrect')
+        }
     }
 
     const downloadExcel = async (userDetails) => {
@@ -78,13 +89,30 @@ const SellerDocs = () => {
         return true
     }
 
-    const UploadFiles = () => {
+    const Status = () => {
         return fileList.map((file) => {
+            console.log('file:list', file)
             const [password, setPassword] = useState('');
             const [download, setDownload] = useState(false)
-            const [userDetails, setUserDetails] = useState({ userId: null, name: null, phoneNumber: null })
+            const [userDetails, setUserDetails] = useState({ userId: null, name: null, phoneNumber: null, awaitToken: null })
+
+
+            // useEffect(() => {
+            //     const getProcess = async () => {
+            //         const url = `${process.env.NEXT_PUBLIC_MANAGER_HOST}/file/check/${userDetails.awaitToken}`
+            //         const request = await axios.post(url);
+            //         console.log('request:', request)
+
+            //     }
+            //     // const timer = setInterval(getAnswer, 2000);
+            //     // return () => clearInterval(timer);
+            //     getProcess()
+
+            // }, []);
+
 
             if (userDetails.userId) {
+
                 return (
                     <div key={file.filename} style={{ marginTop: 50 }}>
                         <Card overrides={{ Root: { style: {} } }}>
@@ -92,7 +120,16 @@ const SellerDocs = () => {
                             <div>
                                 <h3>{userDetails.name}</h3>
                                 <h3>{userDetails.phoneNumber}</h3>
-                                <div style={{ marginTop: 20 }}>
+
+                                <p>
+                                    We work with a queue system to process the document with advanced Machine learning algorithms. If it's busy, you have to wait before your document is being processed. write us an email to get priority access.
+                                </p>
+
+
+                                <h2>Status</h2>
+
+                                {/* <ProgressBar value={request.data.} size={SIZE.large} /> */}
+                                {/* <div style={{ marginTop: 20 }}>
                                     <Button>
                                         <Link href={`/stats/${userDetails.userId}`}>
                                             <a style={{ color: 'white' }}>Show general stats</a>
@@ -101,7 +138,7 @@ const SellerDocs = () => {
                                 </div>
                                 <div style={{ marginTop: 20 }}>
                                     <Button onClick={() => downloadExcel(userDetails)} >download excel file</Button>
-                                </div>
+                                </div> */}
                             </div>
                             {/* </StyledBody> */}
                         </Card>
@@ -197,10 +234,27 @@ const SellerDocs = () => {
                 <PitchText icon={faClock} title="Save Time" description="Convert many mpesa statement at once using our tool hence saving on time." />
             </div>
 
+            <div style={{ marginTop: 20, marginBottom: 20 }}>
+                <p>
+                    Set email that will receive the analytics dashboard link
+                </p>
+                <Input
+                    value={email}
+                    type="email"
+                    onChange={(e): any => {
+                        const text: any = e.target as Element
+                        setEmail(text.value)
+                    }
+                    }
+                    placeholder="Email"
+                    clearOnEscape
+                />
+            </div>
+
             <div> <UploadFile /></div>
 
 
-            <div> <UploadFiles /></div>
+            <div> <Status /></div>
 
         </div>
 
